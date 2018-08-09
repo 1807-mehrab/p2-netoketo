@@ -1,0 +1,6 @@
+/.metadata/
+/.settings/
+.classpath
+.project
+/target/
+nb-configuration.xml
