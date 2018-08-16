@@ -1,1 +1,13 @@
-{{outlet}}
+<h2>Login</h2>
+<form>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button>Login</button>
+    <br>
+    <br>
+    <p>Not Registered?</p>
+    {{#link-to "register"}}
+    Register
+    {{/link-to}}
+</form>
+
