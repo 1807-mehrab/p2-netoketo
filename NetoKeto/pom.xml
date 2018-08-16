@@ -10,6 +10,8 @@
     <name>NetoKeto</name>
 
 	<build>
+		<finalName>NetoKeto</finalName>
+
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -77,8 +79,5 @@
 		</dependency>
 	</dependencies>
 
-    <build>
-        <finalName>NetoKeto</finalName>
-    </build>
 
 </project>
