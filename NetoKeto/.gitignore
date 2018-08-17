@@ -1,8 +1,15 @@
 /.metadata/
+
 /.settings/
+
 .classpath
 .project
-/target/
+/
+target/
+
 nb-configuration.xml
 .idea/
+
 *.iml
+/
+src/main/resources/application.properties
