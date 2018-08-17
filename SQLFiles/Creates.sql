@@ -24,7 +24,7 @@ CREATE TABLE Comments(
 	Flagged int,
 	RecipeID int,
 	UserID int,
-	FOREIGN KEY (RecipeID) REFERENCES Recipe (RecipeID) on delete cascade
+	FOREIGN KEY (RecipeID) REFERENCES Recipe (RecipeID) on delete cascade,
 	FOREIGN KEY (UserID) REFERENCES Users (UserID) on delete cascade
 );
 
