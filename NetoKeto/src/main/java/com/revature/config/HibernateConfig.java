@@ -1,5 +1,8 @@
 package com.revature.config;
 
+
+import com.revature.repository.UserDao;
+import com.revature.services.UserService;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -23,7 +26,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import com.revature.repository.UserDao;
-import com.revature.service.UserService;
 
 
 @Configuration
@@ -34,7 +36,7 @@ import com.revature.service.UserService;
 public class HibernateConfig extends WebMvcConfigurerAdapter {
 	@Autowired
 	private Environment env;
-	
+
 	@Bean
 	public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -43,12 +45,12 @@ public class HibernateConfig extends WebMvcConfigurerAdapter {
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
-	
+
 	@Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
-	
+
 	@Bean
 	public DataSource myDataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
@@ -56,20 +58,20 @@ public class HibernateConfig extends WebMvcConfigurerAdapter {
 		dataSource.setUrl(env.getProperty("jdbc.url"));
 		dataSource.setUsername(env.getProperty("jdbc.username"));
 		dataSource.setPassword(env.getProperty("jdbc.password"));
-		
+
 		return dataSource;
 	}
-	
+
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(myDataSource());
 		sessionFactory.setPackagesToScan(new String[] {"com.revature"});
 		sessionFactory.setHibernateProperties(hibernateProperties());
-		
+
 		return sessionFactory;
 	}
-	
+
 	Properties hibernateProperties() {
 		return new Properties() {
 			{
@@ -78,7 +80,7 @@ public class HibernateConfig extends WebMvcConfigurerAdapter {
 			}
 		};
 	}
-	
+
 	@Bean
 	@Autowired
 	public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
@@ -86,14 +88,14 @@ public class HibernateConfig extends WebMvcConfigurerAdapter {
 		tm.setSessionFactory(sessionFactory);
 		return tm;
 	}
-	
+
 	@Bean
 	public UserDao userDao(SessionFactory sessionFactory) {
 		UserDao dao = new UserDao();
 		dao.setSessionFactory(sessionFactory);
 		return dao;
 	}
-	
+
 	@Bean
 	public UserService userService(UserDao dao) {
 		UserService us = new UserService();
