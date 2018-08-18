@@ -2,6 +2,7 @@ package com.revature.beans;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -32,6 +33,21 @@ public class Recipe
     @NotNull
     @Column
     private LocalDateTime dateCreated;
+
+    @NotNull
+    @Size(max = 300)
+    @Column
+    private String description;
+
+    @NotNull
+    @Size(max = 300)
+    @Column
+    private String ingredients;
+
+    @NotNull
+    @Size(max = 300)
+    @Column
+    private String cookingInstructions;
 
     @OneToOne(mappedBy = "recipe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Image image;
