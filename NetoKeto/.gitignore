@@ -6,3 +6,4 @@
 nb-configuration.xml
 .idea/
 *.iml
+src/main/resources/
