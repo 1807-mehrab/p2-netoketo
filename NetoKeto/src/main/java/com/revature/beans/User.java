@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "NetoKeto_User")
+@Table(name = "Users")
 public class User
 {
     @Id
@@ -14,7 +14,6 @@ public class User
     private String password;
     private String email;
     private int userType;
-
 
     @Override
     public String toString()
