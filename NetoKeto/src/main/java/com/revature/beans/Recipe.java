@@ -150,6 +150,39 @@ public class Recipe
         this.recipeRatings = recipeRatings;
     }
 
+    @NotNull
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public void setDescription(@NotNull String description)
+    {
+        this.description = description;
+    }
+
+    @NotNull
+    public String getIngredients()
+    {
+        return ingredients;
+    }
+
+    public void setIngredients(@NotNull String ingredients)
+    {
+        this.ingredients = ingredients;
+    }
+
+    @NotNull
+    public String getCookingInstructions()
+    {
+        return cookingInstructions;
+    }
+
+    public void setCookingInstructions(@NotNull String cookingInstructions)
+    {
+        this.cookingInstructions = cookingInstructions;
+    }
+
     @Override
     public String toString()
     {
