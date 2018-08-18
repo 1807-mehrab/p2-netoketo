@@ -193,6 +193,9 @@ public class Recipe
                 ", owner=" + owner +
                 ", flagged=" + flagged +
                 ", dateCreated=" + dateCreated +
+                ", description='" + description + '\'' +
+                ", ingredients='" + ingredients + '\'' +
+                ", cookingInstructions='" + cookingInstructions + '\'' +
                 ", image=" + image +
                 ", comments=" + comments +
                 ", recipeRatings=" + recipeRatings +
