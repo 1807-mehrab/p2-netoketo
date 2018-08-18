@@ -15,8 +15,8 @@ public class LoginController {
 	private LoginService ls;
 	
 	@PostMapping(value="/login")
-	public ResponseEntity<String> authenticator(@RequestBody User user) {
-		String u = ls.authenticate(user).toString();
+	public ResponseEntity<User> authenticator(@RequestBody User user) {
+		User u = ls.authenticate(user);
 		return ResponseEntity.ok(u);
 	}
 }
