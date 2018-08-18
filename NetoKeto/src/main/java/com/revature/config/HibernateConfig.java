@@ -76,6 +76,7 @@ public class HibernateConfig extends WebMvcConfigurerAdapter {
 			{
 			setProperty("hibernate.dialect" , env.getProperty("hibernate.dialect"));
 			setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+			setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
 			}
 		};
 	}
