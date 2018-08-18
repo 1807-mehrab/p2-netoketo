@@ -1,5 +1,7 @@
 package com.revature.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +24,14 @@ public class UserController {
 	private UserService us;
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public ResponseEntity<String> getAllUsers(){
-		String users = us.getAllUsers().toString();
+	public ResponseEntity<List<User>> getAllUsers(){
+		List<User> users = us.getAllUsers();
 		return ResponseEntity.ok(users);
 	}
 	
 	@GetMapping(value="/users/{username}")
-	public ResponseEntity<String> getUserByUsername(@PathVariable("username") String username) {
-		String response = us.getUserByUsername(username).toString();
+	public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username) {
+		User response = us.getUserByUsername(username);
 		return ResponseEntity.ok(response);
 	}
 	

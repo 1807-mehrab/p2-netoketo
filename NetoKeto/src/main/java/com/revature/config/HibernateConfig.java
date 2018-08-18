@@ -1,8 +1,6 @@
 package com.revature.config;
 
 
-import com.revature.repository.UserDao;
-import com.revature.services.UserService;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -24,6 +22,12 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import com.revature.repository.RecipeDao;
+import com.revature.repository.UserDao;
+import com.revature.services.LoginService;
+import com.revature.services.RecipeService;
+import com.revature.services.UserService;
 
 
 
@@ -101,5 +105,26 @@ public class HibernateConfig extends WebMvcConfigurerAdapter {
 		UserService us = new UserService();
 		us.setDao(dao);
 		return us;
+	}
+	
+	@Bean
+	public LoginService loginService(UserDao dao) {
+		LoginService ls = new LoginService();
+		ls.setDao(dao);
+		return ls;
+	}
+	
+	@Bean
+	public RecipeDao recipeDao(SessionFactory sessionFactory) {
+		RecipeDao dao = new RecipeDao();
+		dao.setSessionFactory(sessionFactory);
+		return dao;
+	}
+	
+	@Bean
+	public RecipeService recipeService(RecipeDao dao) {
+		RecipeService rs = new RecipeService();
+		rs.setDao(dao);
+		return rs;
 	}
 }
