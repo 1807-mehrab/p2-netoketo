@@ -11,6 +11,14 @@ public class LoginService {
 	@Autowired
 	private UserDao dao;
 	
+	public UserDao getDao() {
+		return dao;
+	}
+
+	public void setDao(UserDao dao) {
+		this.dao = dao;
+	}
+
 	public User authenticate(User user) {
 		return dao.authenticate(user);
 	}

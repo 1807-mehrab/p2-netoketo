@@ -1,10 +1,25 @@
 package com.revature.beans;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "RECIPES")
@@ -16,7 +31,7 @@ public class Recipe
     private int recipeId;
 
     @Column
-    private boolean deleted;
+    private Boolean deleted;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "DELETEDBY")
@@ -28,7 +43,7 @@ public class Recipe
     private User owner;
 
     @Column
-    private boolean flagged;
+    private Boolean flagged;
 
     @NotNull
     @Column
@@ -51,10 +66,12 @@ public class Recipe
 
     @OneToOne(mappedBy = "recipe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Image image;
-
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "recipe")
     private List<Comment> comments;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "recipe")
     private List<RecipeRating> recipeRatings;
 
@@ -68,12 +85,12 @@ public class Recipe
         this.recipeId = recipeId;
     }
 
-    public boolean isDeleted()
+    public Boolean isDeleted()
     {
         return deleted;
     }
 
-    public void setDeleted(boolean deleted)
+    public void setDeleted(Boolean deleted)
     {
         this.deleted = deleted;
     }
@@ -99,12 +116,12 @@ public class Recipe
         this.owner = owner;
     }
 
-    public boolean isFlagged()
+    public Boolean isFlagged()
     {
         return flagged;
     }
 
-    public void setFlagged(boolean flagged)
+    public void setFlagged(Boolean flagged)
     {
         this.flagged = flagged;
     }
