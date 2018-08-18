@@ -15,6 +15,14 @@ public class UserService {
     public List<User> getAllUsers(){
         return dao.getUsers();
     }
+    
+    public User getUserByUsername(String username) {
+    	return dao.getUserByUsername(username);
+    }
+    
+    public void postUser(User user) {
+    	dao.postUser(user);
+    }
 
     public UserDao getDao()
     {

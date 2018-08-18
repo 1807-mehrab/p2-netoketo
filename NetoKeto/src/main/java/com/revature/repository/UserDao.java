@@ -22,4 +22,16 @@ public class UserDao {
         Session s = sessionFactory.getCurrentSession();
         return s.createQuery("from User").list();
     }
+    
+    public User getUserByUsername(String username) {
+    	Session s = sessionFactory.getCurrentSession();
+    	return (User)s.createQuery("from User where username = :username").setString("username", username).list().get(0);
+    }
+    
+    @Transactional
+    public void postUser(User user) {
+    	Session s = sessionFactory.getCurrentSession();
+    	System.out.println(user);
+    	s.save(user);
+    }
 }
