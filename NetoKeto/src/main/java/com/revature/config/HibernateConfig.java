@@ -23,8 +23,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import com.revature.repository.CommentDao;
 import com.revature.repository.RecipeDao;
 import com.revature.repository.UserDao;
+import com.revature.services.CommentService;
 import com.revature.services.LoginService;
 import com.revature.services.RecipeService;
 import com.revature.services.UserService;
@@ -126,5 +128,18 @@ public class HibernateConfig extends WebMvcConfigurerAdapter {
 		RecipeService rs = new RecipeService();
 		rs.setDao(dao);
 		return rs;
+	}
+	
+	@Bean
+	public CommentDao commentDao(SessionFactory sessionFactory) {
+		CommentDao dao = new CommentDao();
+		dao.setSessionFactory(sessionFactory);
+		return dao;
+	}
+	
+	public CommentService commentService(CommentDao dao) {
+		CommentService cs = new CommentService();
+		cs.setDao(dao);
+		return cs;
 	}
 }

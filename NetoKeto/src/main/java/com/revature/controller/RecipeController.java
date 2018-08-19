@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,5 +33,12 @@ public class RecipeController {
 			return;
 		}
 		rs.postRecipe(recipe);
+	}
+	
+	@GetMapping(value="/recipes/{id}")
+	public ResponseEntity<Recipe> getRecipeById(@PathVariable int id) {
+		Recipe recipe = rs.getRecipeById(id);
+		return ResponseEntity.ok(recipe);
+		
 	}
 }
