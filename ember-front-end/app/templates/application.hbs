@@ -1,11 +1,18 @@
 <h2>NETOKETO TEST 01</h2>
 <div>
-{{#link-to "login"}}
-Login
-{{/link-to}}
-{{#link-to "profile"}}
-Profile
-{{/link-to}}
+{{#if logindata}}
+    {{#link-to "login"}}
+    Logout
+    {{/link-to}}
+    {{#link-to "profile"}}
+    Profile
+    {{/link-to}}
+{{else}}
+    {{#link-to "login"}}
+    Login
+    {{/link-to}}
+{{/if}}
+
 {{#link-to "home"}}
 Home
 {{/link-to}}
