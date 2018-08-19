@@ -1,13 +1,31 @@
 <h2>Login</h2>
-<form>
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Password">
-    <button>Login</button>
-    <br>
-    <br>
-    <p>Not Registered?</p>
+<form class="form-horizontal" {{action "login" on="submit"}}>
+  <div class="control-group">
+    <div class="control-label">
+      <label>Username</label>
+    </div>
+
+    <div class="controls">
+      {{input id='identification' placeholder='Enter Login' value=nkusername }}
+      {{nkusername}}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="control-label">
+      <label>Password</label>
+    </div>
+
+    <div class="controls">
+      {{input id='password' placeholder='Enter Password' type='password' value=nkpassword}}
+    </div>
+  </div>
+
+  <button type="submit" class="btn">Log in!</button>
+</form>
+
     {{#link-to "register"}}
     Register
     {{/link-to}}
-</form>
+
 
