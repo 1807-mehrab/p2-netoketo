@@ -38,8 +38,8 @@ public class Recipe
     private User deletedBy;
 
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "OWNERID", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "OWNERID", nullable = false, referencedColumnName = "AccountID")
     private User owner;
 
     @Column
