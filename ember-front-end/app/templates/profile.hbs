@@ -14,7 +14,12 @@
 
     <div class="col-md-6">
       <p>
-        Lets go
+        {{#each model as |user|}}
+        <p>{{user.username}}</p>
+        <p>{{user.password}}</p>
+        <p>{{user.email}}</p>
+        <p>{{user.userType}}</p>
+        {{/each}}
       </p>
     </div>
   </div>
