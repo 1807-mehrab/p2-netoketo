@@ -24,6 +24,11 @@ public class RecipeDao {
 		return recipes;
 	}
 	
+	public Recipe getRecipeByID(int id) {
+		Session s = sessionFactory.getCurrentSession();
+		return (Recipe)s.createQuery("from Recipe where recipeId = :recipeId").setInteger("recipeID",id).list().get(0); 
+	}
+	
 	@Transactional
 	public void postRecipe(Recipe recipe) {
 		Session s = sessionFactory.getCurrentSession();

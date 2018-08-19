@@ -1,6 +1,6 @@
 package com.revature.beans;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -41,8 +41,8 @@ public class Recipe
     private User deletedBy;
 
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "OWNERID", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "OWNERID", nullable = false, referencedColumnName = "AccountID")
     private User owner;
 
     @Column
@@ -50,7 +50,7 @@ public class Recipe
 
     @NotNull
     @Column
-    private LocalDateTime dateCreated;
+    private Date dateCreated;
 
     @NotNull
     @Size(max = 300)
@@ -140,12 +140,12 @@ public class Recipe
     }
 
     @NotNull
-    public LocalDateTime getDateCreated()
+    public Date getDateCreated()
     {
         return dateCreated;
     }
 
-    public void setDateCreated(@NotNull LocalDateTime dateCreated)
+    public void setDateCreated(@NotNull Date dateCreated)
     {
         this.dateCreated = dateCreated;
     }

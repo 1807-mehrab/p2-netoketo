@@ -17,6 +17,10 @@ public class RecipeService {
 		return dao.getAllRecipes();
 	}
 	
+	public Recipe getRecipeById(int id) {
+		return dao.getRecipeByID(id);
+	}
+	
 	public void postRecipe(Recipe recipe) {
 		dao.postRecipe(recipe);
 	}
