@@ -1,5 +1,5 @@
 <h2>Login</h2>
-<form class="form-horizontal" {{action "login" on="submit"}}>
+<form class="form-horizontal" {{action "login" nkusername nkpassword on="submit"}}>
   <div class="control-group">
     <div class="control-label">
       <label>Username</label>
@@ -7,7 +7,6 @@
 
     <div class="controls">
       {{input id='identification' placeholder='Enter Login' value=nkusername }}
-      {{nkusername}}
     </div>
   </div>
 
@@ -27,5 +26,7 @@
     {{#link-to "register"}}
     Register
     {{/link-to}}
+
+    
 
 
