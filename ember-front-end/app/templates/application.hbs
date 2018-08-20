@@ -1,18 +1,17 @@
 <h2>NETOKETO TEST 01</h2>
 <div>
-{{#if logindata}}
-    {{#link-to "login"}}
+{{#if model as |login|}}
+    <button {{action 'logout'}}>
     Logout
-    {{/link-to}}
-    {{#link-to "profile"}}
-    Profile
-    {{/link-to}}
+    </button>
 {{else}}
     {{#link-to "login"}}
     Login
     {{/link-to}}
 {{/if}}
-
+{{#link-to "profile"}}
+    Profile
+{{/link-to}}
 {{#link-to "home"}}
 Home
 {{/link-to}}
