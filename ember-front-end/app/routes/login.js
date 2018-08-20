@@ -6,23 +6,28 @@ export default Route.extend({
     },
     actions: {
         login(nkusername,nkpassword) {
+            /*OLD METHOD USING GET VIA QUERYRECORD
+            this.store.unloadAll('login');
             var self = this;
             this.store.queryRecord('login', { username: nkusername, password: nkpassword }).then(function(logins) {
                 console.log(logins);
                 self.transitionTo('home');
                 return logins.get('firstObject');
             });
-            /*OLD METHOD USING POST:
-            //let result = this.store.createRecord("login")
+            */
+            
+            //NEW METHOD USING POST:
+            this.store.unloadAll('login');
             var onSuccess = function(){
                 console.log("success");
-                
                 self.transitionTo('home');
             }
             var onFail = function(){
                 console.log("failure");
                 console.log(nkusername);
                 console.log(nkpassword);
+                self.store.unloadAll('login');
+                self.refresh;
             }
             
             var self = this;
@@ -34,9 +39,7 @@ export default Route.extend({
                 accounttype:'0' 
             })
             .save().then(onSuccess,onFail);
-            */
-            
-            
+ 
         }
     }
 });

@@ -37,6 +37,7 @@ public class UserDao {
     
     public User authenticate(User user) {
     	Session s = sessionFactory.getCurrentSession();
+    	System.out.println("Querying: " + user);
     	List<User> users = s.createQuery("from User where username = :username and password = :password").setString("username", user.getUsername()).setString("password", user.getPassword()).list();
     	if (users.size() != 1) {
     		user = null;
