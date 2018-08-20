@@ -1,6 +1,5 @@
 package com.revature.config;
 
-
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -24,14 +23,16 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import com.revature.repository.CommentDao;
+import com.revature.repository.ImageDao;
 import com.revature.repository.RecipeDao;
+import com.revature.repository.RecipeRatingDao;
 import com.revature.repository.UserDao;
 import com.revature.services.CommentService;
+import com.revature.services.ImageService;
 import com.revature.services.LoginService;
+import com.revature.services.RecipeRatingService;
 import com.revature.services.RecipeService;
 import com.revature.services.UserService;
-
-
 
 @Configuration
 @ComponentScan("com.revature")
@@ -137,9 +138,38 @@ public class HibernateConfig extends WebMvcConfigurerAdapter {
 		return dao;
 	}
 	
+	@Bean
 	public CommentService commentService(CommentDao dao) {
 		CommentService cs = new CommentService();
 		cs.setDao(dao);
 		return cs;
+	}
+	
+	@Bean 
+	public RecipeRatingDao recipeRatingDao(SessionFactory sessionFactory) {
+		RecipeRatingDao dao = new RecipeRatingDao();
+		dao.setSessionFactory(sessionFactory);
+		return dao;
+	}
+	
+	@Bean
+	public RecipeRatingService recipeRatingService(RecipeRatingDao dao) {
+		RecipeRatingService rrs= new RecipeRatingService();
+		rrs.setDao(dao);
+		return rrs;
+	}
+	
+	@Bean
+	public ImageDao imageDao(SessionFactory sessionFactory) {
+		ImageDao dao = new ImageDao();
+		dao.setSessionFactory(sessionFactory);
+		return dao;
+	}
+	
+	@Bean
+	public ImageService imageService(ImageDao dao) {
+		ImageService is= new ImageService();
+		is.setDao(dao);
+		return is;
 	}
 }
