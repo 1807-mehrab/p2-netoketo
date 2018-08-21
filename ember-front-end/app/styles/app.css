@@ -15,3 +15,10 @@ html body {
 
 }
 
+.navbar-nav .nav-item .nav-link a{
+    color: rgb(223, 223, 223);
+}
+
+#home-recipe-popular {
+    padding: 15px;
+}
