@@ -23,35 +23,36 @@ import com.revature.services.RecipeService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("recipes")
 public class RecipeController {
 	@Autowired
 	RecipeService rs;
-	
-	@GetMapping
+
+	@GetMapping(value = "/recipes")
 	public ResponseEntity<List<Recipe>> getAllRecipes() {
 		List<Recipe> recipes = rs.getAllRecipes();
 		return ResponseEntity.ok(recipes);
 	}
-	
-	@PostMapping
-	public void postRecipe(@Valid @RequestBody Recipe recipe, Errors errors) {
+
+	@PostMapping(value = "/recipes")
+	public ResponseEntity<Recipe> postRecipe(@Valid @RequestBody Recipe recipe, Errors errors) {
 		if (errors.hasErrors()) {
-			return;
+			return null;
 		}
 		recipe.setDateCreated(new java.sql.Date(System.currentTimeMillis()));
 		rs.postRecipe(recipe);
+		return ResponseEntity.ok(recipe);
 	}
 
-    @PutMapping(value="/recipes")
-    public void updateRecipe(@Valid @RequestBody Recipe recipe, Errors errors) {
-        if (errors.hasErrors()) {
-            return;
-        }
-        rs.updateRecipe(recipe);
-    }
+	@PutMapping(value = "/recipes")
+	public ResponseEntity<Recipe> updateRecipe(@Valid @RequestBody Recipe recipe, Errors errors) {
+		if (errors.hasErrors()) {
+			return null;
+		}
+		rs.updateRecipe(recipe);
+		return ResponseEntity.ok(recipe);
+	}
 
-	@GetMapping(value="/{id}")
+	@GetMapping(value = "/recipes/{id}")
 	public ResponseEntity<Recipe> getRecipeById(@PathVariable int id) {
 		Recipe recipe = rs.getRecipeById(id);
 		return ResponseEntity.ok(recipe);
