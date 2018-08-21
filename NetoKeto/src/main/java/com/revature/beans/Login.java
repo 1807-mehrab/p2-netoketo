@@ -2,70 +2,28 @@ package com.revature.beans;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
-@Entity
-@Table(name = "ACCOUNTS")
-@JsonRootName(value = "user")
-public class User
+@JsonRootName(value = "login")
+public class Login
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accountSeq")
-    @SequenceGenerator(allocationSize = 1, name = "accountSeq", sequenceName = "PK_ACCOUNT_SEQ")
-    @Column(name = "ACCOUNTID")
+
     private int userId;
 
-    @NotNull
-    @Size(max = 50)
-    @Column(name = "USERNAME", unique = true, nullable = false, length = 50)
     private String username;
 
-    @NotNull
-    @Size(max = 50)
-    @Column(name = "PASSWORD", nullable = false, length = 50)
     private String password;
 
-    @NotNull
-    @Size(max = 50)
-    @Column(name = "EMAIL", unique = true, nullable = false, length = 50)
     private String email;
 
-    @NotNull
-    @Min(0)
-    @Max(1)
-    // if userType is 1, user is moderator, else user is not admin
-    @Column(name = "ACCOUNTTYPE", nullable = false)
     private int userType;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private List<Recipe> recipesCreated;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "deletedBy", cascade = CascadeType.ALL)
     private List<Recipe> recipesDeleted;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private List<Comment> postedComments;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private List<RecipeRating> recipeRatingsUserRated;
 
     public int getUserId()
@@ -169,21 +127,4 @@ public class User
                 ", userType=" + userType +
                 '}';
     }
-    
-    public User() {
-    	super();
-    }
-    
-	public User(Login L) {
-		super();
-		this.userId = L.getUserId();
-		this.username = L.getUsername();
-		this.password = L.getPassword();
-		this.email = L.getEmail();
-		this.userType = L.getUserType();
-		this.recipesCreated = L.getRecipesCreated();
-		this.recipesDeleted = L.getRecipesDeleted();
-		this.postedComments = L.getPostedComments();
-		this.recipeRatingsUserRated = L.getRecipeRatingsUserRated();
-	}
 }
