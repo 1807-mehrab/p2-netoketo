@@ -34,7 +34,24 @@ public class RecipeDao {
 		Session s = sessionFactory.getCurrentSession();
 		s.save(recipe);
 	}
-	
+
+	public List<Recipe> getRecipesOrderByMostRecent (){
+		Session s = sessionFactory.getCurrentSession();
+		List<Recipe> recipes = s.createQuery("from Recipe order by dateCreated desc").list();
+		return recipes;
+	}
+
+	public List<Recipe> getRecipesByMostPopular(){
+		Session s = sessionFactory.getCurrentSession();
+		List<Recipe> recipes = s.createQuery("select recipe" +
+				" from Recipe recipe" +
+				"	join recipe.recipeRatings rating" +
+				" group by recipe" +
+				" order by sum(rating.valNum) desc").list();
+		return recipes;
+	}
+
+
 	public void updateRecipe(Recipe recipe) {
 		Session s = sessionFactory.getCurrentSession();
 		s.merge(recipe);

@@ -1,5 +1,7 @@
 package com.revature.controller;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -7,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,6 +38,7 @@ public class RecipeController {
 		if (errors.hasErrors()) {
 			return null;
 		}
+		recipe.setDateCreated(new java.sql.Date(System.currentTimeMillis()));
 		rs.postRecipe(recipe);
 		return ResponseEntity.ok(recipe);
 	}
@@ -53,5 +57,19 @@ public class RecipeController {
 		Recipe recipe = rs.getRecipeById(id);
 		return ResponseEntity.ok(recipe);
 
+	}
+
+	//TODO: Order by most recent recipes
+	@GetMapping(value = "/recipes/recent")
+	public List<Recipe> getRecentRecipes(){
+		List<Recipe> recentRecipes = rs.getRecipesOrderedByDate();
+		return recentRecipes;
+	}
+
+	//TODO: Order by most popular recipes
+	@GetMapping(value="/recipes/popular")
+	public List<Recipe> getPopularRecipes(){
+		List<Recipe> popularRecipes = rs.getRecipesOrderedByRating();
+		return popularRecipes;
 	}
 }
