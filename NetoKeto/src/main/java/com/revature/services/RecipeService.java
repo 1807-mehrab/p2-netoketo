@@ -25,6 +25,10 @@ public class RecipeService {
 		dao.postRecipe(recipe);
 	}
 
+	public List<Recipe> getRecipesOrderedByDate() { return dao.getRecipesOrderByMostRecent(); }
+
+	public List<Recipe> getRecipesOrderedByRating() { return dao.getRecipesByMostPopular(); }
+
 	public RecipeDao getDao() {
 		return dao;
 	}

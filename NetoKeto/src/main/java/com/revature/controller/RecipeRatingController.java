@@ -34,6 +34,8 @@ public class RecipeRatingController {
 		if (errors.hasErrors()) {
 			return;
 		}
+		recipeRating.setDateCreated(new java.sql.Date(System.currentTimeMillis()));
+		System.out.println(recipeRating);
 		rrs.postRecipeRating(recipeRating);
 	}
 }
