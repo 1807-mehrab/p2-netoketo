@@ -1,7 +1,35 @@
 <h1>Register</h1>
 
-Username: {{input}}<br>
-Email: {{input}}<br>
-Password: {{input}}<br>
-Confirm Password: {{input}}<br>
-<button>Submit</button>
+<form class="form-horizontal" {{action "register" rgusername rgpassword rgemail on="submit"}}>
+  <div class="control-group">
+    <div class="control-label">
+      <label>Your Username</label>
+    </div>
+
+    <div class="controls">
+      {{input id='identification' placeholder='Enter Username' value=rgusername }}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="control-label">
+      <label>Password</label>
+    </div>
+
+    <div class="controls">
+      {{input id='email' placeholder='Enter Email' type='email' value=rgemail}}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="control-label">
+      <label>Password</label>
+    </div>
+
+    <div class="controls">
+      {{input id='password' placeholder='Enter Password' type='password' value=rgpassword}}
+    </div>
+  </div>
+
+  <button type="submit" class="btn">Register</button>
+</form>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,6 +37,15 @@ public class RecipeController {
 		}
 		rs.postRecipe(recipe);
 	}
+	
+	@PutMapping(value="/recipes") 
+		public void updateRecipe(@Valid @RequestBody Recipe recipe, Errors errors) {
+			if (errors.hasErrors()) {
+				return;
+			}
+			rs.updateRecipe(recipe);
+		}
+	
 	
 	@GetMapping(value="/recipes/{id}")
 	public ResponseEntity<Recipe> getRecipeById(@PathVariable int id) {

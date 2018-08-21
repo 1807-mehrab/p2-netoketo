@@ -24,6 +24,10 @@ public class RecipeService {
 	public void postRecipe(Recipe recipe) {
 		dao.postRecipe(recipe);
 	}
+	
+	public void updateRecipe(Recipe recipe) {
+		dao.updateRecipe(recipe);
+	}
 
 	public RecipeDao getDao() {
 		return dao;
