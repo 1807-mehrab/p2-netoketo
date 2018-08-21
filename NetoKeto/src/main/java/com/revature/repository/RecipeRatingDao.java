@@ -31,6 +31,6 @@ public class RecipeRatingDao {
 	
 	public void updateRecipeRating(RecipeRating recipeRating) {
 		Session s = sessionFactory.getCurrentSession();
-		s.update(recipeRating);
+		s.merge(recipeRating);
 	}
 }
