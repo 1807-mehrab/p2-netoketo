@@ -24,5 +24,9 @@ public class RecipeRatingService {
 	public void postRecipeRating(RecipeRating recipeRating) {
 		dao.postRecipeRating(recipeRating);
 	}
+	
+	public void updateRecipeRating(RecipeRating recipeRating) {
+		dao.updateRecipeRating(recipeRating);
+	}
 
 }

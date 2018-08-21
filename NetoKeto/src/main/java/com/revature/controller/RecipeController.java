@@ -23,34 +23,35 @@ import com.revature.services.RecipeService;
 public class RecipeController {
 	@Autowired
 	RecipeService rs;
-	
-	@GetMapping(value="/recipes")
+
+	@GetMapping(value = "/recipes")
 	public ResponseEntity<List<Recipe>> getAllRecipes() {
 		List<Recipe> recipes = rs.getAllRecipes();
 		return ResponseEntity.ok(recipes);
 	}
-	
-	@PostMapping(value="/recipes")
-	public void postRecipe(@Valid @RequestBody Recipe recipe, Errors errors) {
+
+	@PostMapping(value = "/recipes")
+	public ResponseEntity<Recipe> postRecipe(@Valid @RequestBody Recipe recipe, Errors errors) {
 		if (errors.hasErrors()) {
-			return;
+			return null;
 		}
 		rs.postRecipe(recipe);
+		return ResponseEntity.ok(recipe);
 	}
-	
-	@PutMapping(value="/recipes") 
-		public void updateRecipe(@Valid @RequestBody Recipe recipe, Errors errors) {
-			if (errors.hasErrors()) {
-				return;
-			}
-			rs.updateRecipe(recipe);
+
+	@PutMapping(value = "/recipes")
+	public ResponseEntity<Recipe> updateRecipe(@Valid @RequestBody Recipe recipe, Errors errors) {
+		if (errors.hasErrors()) {
+			return null;
 		}
-	
-	
-	@GetMapping(value="/recipes/{id}")
+		rs.updateRecipe(recipe);
+		return ResponseEntity.ok(recipe);
+	}
+
+	@GetMapping(value = "/recipes/{id}")
 	public ResponseEntity<Recipe> getRecipeById(@PathVariable int id) {
 		Recipe recipe = rs.getRecipeById(id);
 		return ResponseEntity.ok(recipe);
-		
+
 	}
 }

@@ -24,4 +24,8 @@ public class ImageService {
 	public void postImage(Image image) {
 		dao.postImage(image);
 	}
+	
+	public void updateImage(Image image) {
+		dao.updateImage(image);
+	}
 }

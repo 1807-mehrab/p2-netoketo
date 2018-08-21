@@ -32,4 +32,8 @@ public class CommentService {
 	public void postComment(Comment comment) {
 		dao.postComment(comment);
 	}
+	
+	public void updateComment(Comment comment) {
+		dao.updateComment(comment);
+	}
 }

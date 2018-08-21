@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,10 +31,20 @@ public class ImageController {
 	}
 	
 	@PostMapping(value="/image")
-	public void postImage(@Valid @RequestBody Image image, Errors errors) {
+	public ResponseEntity<Image> postImage(@Valid @RequestBody Image image, Errors errors) {
 		if (errors.hasErrors()) {
-			return;
+			return null;
 		}
 		is.postImage(image);
+		return ResponseEntity.ok(image);
+	}
+	
+	@PutMapping(value="/image")
+	public ResponseEntity<Image> updateImage(@Valid @RequestBody Image image, Errors errors) {
+		if (errors.hasErrors()) {
+			return null;
+		}
+		is.updateImage(image);
+		return ResponseEntity.ok(image);
 	}
 }

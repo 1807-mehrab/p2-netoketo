@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,10 +43,20 @@ public class CommentController {
 	}
 	
 	@PostMapping(value="/comments")
-	public void postComment(@Valid @RequestBody Comment comment, Errors errors) {
+	public ResponseEntity<Comment> postComment(@Valid @RequestBody Comment comment, Errors errors) {
 		if (errors.hasErrors()) {
-			return;
+			return null;
 		}
 		cs.postComment(comment);
+		return ResponseEntity.ok(comment);
+	}
+	
+	@PutMapping(value="/comments")
+	public ResponseEntity<Comment> updateComment(@Valid @RequestBody Comment comment, Errors errors) {
+		if (errors.hasErrors()) {
+			return null;
+		}
+		cs.updateComment(comment);
+		return ResponseEntity.ok(comment);
 	}
 }
