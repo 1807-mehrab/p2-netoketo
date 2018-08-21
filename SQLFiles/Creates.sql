@@ -4,7 +4,6 @@ Drop Table Comments;
 Drop Table Recipes;
 Drop Table Accounts;
 
-
 CREATE TABLE Accounts(
 	AccountID int Primary Key,
 	Username VarChar2(50) Unique Not Null,

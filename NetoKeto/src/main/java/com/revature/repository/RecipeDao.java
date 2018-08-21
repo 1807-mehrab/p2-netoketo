@@ -34,4 +34,9 @@ public class RecipeDao {
 		Session s = sessionFactory.getCurrentSession();
 		s.save(recipe);
 	}
+	
+	public void updateRecipe(Recipe recipe) {
+		Session s = sessionFactory.getCurrentSession();
+		s.merge(recipe);
+	}
 }

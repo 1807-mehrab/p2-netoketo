@@ -28,4 +28,9 @@ public class RecipeRatingDao {
 		Session s = sessionFactory.getCurrentSession();
 		s.save(recipeRating);
 	}
+	
+	public void updateRecipeRating(RecipeRating recipeRating) {
+		Session s = sessionFactory.getCurrentSession();
+		s.merge(recipeRating);
+	}
 }

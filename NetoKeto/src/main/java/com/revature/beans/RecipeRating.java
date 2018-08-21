@@ -15,8 +15,11 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 @Entity
 @Table(name = "RECIPERATINGS")
+@JsonRootName(value = "reciperating")
 public class RecipeRating
 {
     @Id

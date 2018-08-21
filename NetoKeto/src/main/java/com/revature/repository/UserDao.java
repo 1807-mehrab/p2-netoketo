@@ -31,8 +31,13 @@ public class UserDao {
     @Transactional
     public void postUser(User user) {
     	Session s = sessionFactory.getCurrentSession();
-    	System.out.println(user);
     	s.save(user);
+    }
+   
+    public void updateUser(User user) {
+    	Session s = sessionFactory.getCurrentSession();
+    	System.out.println(user);
+    	s.merge(user);
     }
     
     public User authenticate(User user) {

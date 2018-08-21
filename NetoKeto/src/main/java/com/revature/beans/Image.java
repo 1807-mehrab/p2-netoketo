@@ -2,8 +2,11 @@ package com.revature.beans;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 @Entity
 @Table(name = "IMAGES")
+@JsonRootName(value = "image")
 public class Image
 {
     @Id

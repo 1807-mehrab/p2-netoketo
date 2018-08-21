@@ -40,4 +40,9 @@ public class CommentDao {
 		Session s = sessionFactory.getCurrentSession();
 		s.save(comment);
 	}
+	
+	public void updateComment(Comment comment) {
+		Session s = sessionFactory.getCurrentSession();
+		s.merge(comment);
+	}
 }

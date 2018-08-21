@@ -30,10 +30,19 @@ public class RecipeRatingController {
 	}
 	
 	@PostMapping(value="/ratings")
-	public void postRecipeRating(@Valid @RequestBody RecipeRating recipeRating , Errors errors) {
+	public ResponseEntity<RecipeRating> postRecipeRating(@Valid @RequestBody RecipeRating recipeRating , Errors errors) {
 		if (errors.hasErrors()) {
-			return;
+			return null;
 		}
 		rrs.postRecipeRating(recipeRating);
+		return ResponseEntity.ok(recipeRating);
+	}
+	
+	public ResponseEntity<RecipeRating> updateRecipeRating(@Valid @RequestBody RecipeRating recipeRating, Errors errors) {
+		if (errors.hasErrors()) {
+			return null;
+		}
+		rrs.updateRecipeRating(recipeRating);
+		return ResponseEntity.ok(recipeRating);
 	}
 }
