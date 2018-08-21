@@ -33,10 +33,11 @@ public class UserDao {
     	Session s = sessionFactory.getCurrentSession();
     	s.save(user);
     }
-    
+   
     public void updateUser(User user) {
     	Session s = sessionFactory.getCurrentSession();
-    	s.update(user);
+    	System.out.println(user);
+    	s.merge(user);
     }
     
     public User authenticate(User user) {

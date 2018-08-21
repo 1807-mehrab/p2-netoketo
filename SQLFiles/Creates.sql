@@ -1,9 +1,8 @@
 Drop Table Images;
-Drop Table RecipeRating;
+Drop Table RecipeRatings;
 Drop Table Comments;
 Drop Table Recipes;
 Drop Table Accounts;
-
 
 CREATE TABLE Accounts(
 	AccountID int Primary Key,
@@ -21,10 +20,10 @@ CREATE TABLE Recipes(
 	DeletedBy int,
 	OwnerID int Not Null,
 	Flagged int,
-	DateCreated TIMESTAMP,
-	Description varchar2(300) Not NULL,
-	Ingredients varchar2(300) Not NULL,
-	CookingInstructions VARCHAR2(300) Not NULL,
+	DateCreated Date,
+	Description varchar2(4000) Not NULL,
+	Ingredients varchar2(4000) Not NULL,
+	CookingInstructions VARCHAR2(4000) Not NULL,
 	Foreign Key (DeletedBy) REFERENCES Accounts (AccountID) on delete cascade,
 	Foreign Key (OwnerID) REFERENCES Accounts (AccountID) on delete cascade
 );
@@ -32,21 +31,21 @@ CREATE TABLE Recipes(
 
 CREATE TABLE Comments(
 	CommentID int Primary Key,
-	Content VarChar2(300) Not NULL,
+	Content VarChar2(1000) Not NULL,
 	Flagged int,
 	RecipeID int Not NULL,
 	OwnerID int Not NULL,
-	DateCreated TIMESTAMP,
+	DateCreated Date,
 	FOREIGN KEY (RecipeID) REFERENCES Recipes (RecipeID) on delete cascade,
 	FOREIGN KEY (OwnerID) REFERENCES Accounts (AccountID) on delete cascade
 );
 
-CREATE TABLE RecipeRating(
+CREATE TABLE RecipeRatings(
 	RatingID int PRIMARY Key,
 	OwnerID int Not NULL,
 	RecipeID int Not NULL,
 	ValNum int,
-	DateCreated TIMESTAMP,
+	DateCreated Date,
 	FOREIGN Key (RecipeID) References Recipes (RecipeID) on delete cascade,
 	Foreign Key (OwnerID) References Accounts (AccountID) on delete cascade
 );

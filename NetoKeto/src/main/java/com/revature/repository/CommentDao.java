@@ -43,6 +43,6 @@ public class CommentDao {
 	
 	public void updateComment(Comment comment) {
 		Session s = sessionFactory.getCurrentSession();
-		s.update(comment);
+		s.merge(comment);
 	}
 }
