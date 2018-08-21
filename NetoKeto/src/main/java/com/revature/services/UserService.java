@@ -1,11 +1,12 @@
 package com.revature.services;
 
-import com.revature.repository.UserDao;
-import com.revature.beans.User;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.revature.beans.User;
+import com.revature.repository.UserDao;
 
 @Service
 public class UserService {
@@ -22,6 +23,9 @@ public class UserService {
     
     public void postUser(User user) {
     	dao.postUser(user);
+    }
+    
+    public void updateUser(User user) {
     }
 
     public UserDao getDao()

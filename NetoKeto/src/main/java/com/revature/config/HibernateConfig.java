@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -22,6 +23,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.repository.CommentDao;
 import com.revature.repository.ImageDao;
 import com.revature.repository.RecipeDao;
@@ -37,7 +40,6 @@ import com.revature.services.UserService;
 @Configuration
 @ComponentScan("com.revature")
 @EnableTransactionManagement
-@EnableWebMvc
 @PropertySource("classpath:application.properties")
 public class HibernateConfig extends WebMvcConfigurerAdapter {
 	@Autowired

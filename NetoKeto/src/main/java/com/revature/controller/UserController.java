@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,5 +44,13 @@ public class UserController {
 			return;
 		}
 		us.postUser(user);
+	}
+	
+	@PutMapping(value= "/users")
+	public void updateUser(@Valid @RequestBody User user, Errors errors) {
+		if (errors.hasErrors()) {
+			return;
+		}
+		us.updateUser(user);
 	}
 }
