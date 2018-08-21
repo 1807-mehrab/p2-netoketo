@@ -28,4 +28,9 @@ public class ImageDao {
 		Session s = sessionFactory.getCurrentSession();
 		s.save(image);
 	}
+	
+	public void updateImage(Image image) {
+		Session s = sessionFactory.getCurrentSession();
+		s.update(image);
+	}
 }
