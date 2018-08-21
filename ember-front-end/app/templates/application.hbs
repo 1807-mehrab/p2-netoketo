@@ -26,9 +26,9 @@
        </li>
        <li class="nav-item">
        <div class="nav-link">
-       {{#link-to "searchresults"}}
-       Search
-       {{/link-to}}
+       <button class="btn btn-info" {{action 'toggleSearch'}}>
+           Search
+        </button>
        </div>
        </li>
    </ul>
@@ -55,11 +55,17 @@
            Login
            {{/link-to}}
            </div>
-       </li>
-       {{/if}}
-   </ul>
-   </nav>
-
+        </li>
+        {{/if}}
+    </ul>
+    </nav>
+    {{#if isSearch}}
+    <br>
+    <div class="container">
+        {{search-bar-filter}}
+    </div>
+    {{/if}}
+    <br>
    <div class="container">
    {{outlet}}
    </div>
