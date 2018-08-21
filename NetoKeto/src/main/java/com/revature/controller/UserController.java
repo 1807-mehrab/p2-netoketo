@@ -41,19 +41,9 @@ public class UserController {
 	}
 	
 	@PostMapping(value = "/users")
-	public ResponseEntity<User> postUser(@RequestBody String inpt) {
-		inpt = inpt.replaceFirst("\"user\":", "");
-		inpt = inpt.substring(1);
-		inpt = inpt.substring(0, (inpt.length()-1));
-		ObjectMapper mapper = new ObjectMapper();
-		User auth = new User();
-		try {
-			auth = mapper.readValue(inpt, User.class);;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		us.postUser(auth);
-		return ResponseEntity.ok(auth);
+	public ResponseEntity<User> postUser(@RequestBody User user) {
+		us.postUser(user);
+		return ResponseEntity.ok(user);
 	}
 	
 	@PutMapping(value= "/users")

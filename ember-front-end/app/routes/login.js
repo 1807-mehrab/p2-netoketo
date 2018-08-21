@@ -12,10 +12,10 @@ export default Route.extend({
             /*OLD METHOD USING GET VIA QUERYRECORD
             this.store.unloadAll('login');
             var self = this;
-            this.store.queryRecord('login', { username: nkusername, password: nkpassword }).then(function(logins) {
-                console.log(logins);
+            this.store.queryRecord('login', { username: nkusername, password: nkpassword }).then(function(Logins) {
+                console.log(Logins);
                 self.transitionTo('home');
-                return logins.get('firstObject');
+                return Logins.get('firstObject');
             });
             */
             
