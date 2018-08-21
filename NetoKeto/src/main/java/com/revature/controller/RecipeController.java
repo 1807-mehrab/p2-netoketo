@@ -60,14 +60,14 @@ public class RecipeController {
 	}
 
 	//TODO: Order by most recent recipes
-	@GetMapping(value = "/recent")
+	@GetMapping(value = "/recipes/recent")
 	public List<Recipe> getRecentRecipes(){
 		List<Recipe> recentRecipes = rs.getRecipesOrderedByDate();
 		return recentRecipes;
 	}
 
 	//TODO: Order by most popular recipes
-	@GetMapping(value="/popular")
+	@GetMapping(value="/recipes/popular")
 	public List<Recipe> getPopularRecipes(){
 		List<Recipe> popularRecipes = rs.getRecipesOrderedByRating();
 		return popularRecipes;

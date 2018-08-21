@@ -43,7 +43,11 @@ public class RecipeDao {
 
 	public List<Recipe> getRecipesByMostPopular(){
 		Session s = sessionFactory.getCurrentSession();
-		List<Recipe> recipes = s.createQuery("select sum(recipe.recipeRatings.valNum) from Recipe recipe").list();
+		List<Recipe> recipes = s.createQuery("select recipe" +
+				" from Recipe recipe" +
+				"	join recipe.recipeRatings rating" +
+				" group by recipe" +
+				" order by sum(rating.valNum) desc").list();
 		return recipes;
 	}
 
