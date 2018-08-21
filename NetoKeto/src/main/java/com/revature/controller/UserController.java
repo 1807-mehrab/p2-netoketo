@@ -1,5 +1,6 @@
 package com.revature.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.User;
 import com.revature.services.UserService;
 
@@ -38,10 +40,18 @@ public class UserController {
 	}
 	
 	@PostMapping(value = "/users")
-	public void postUser(@Valid @RequestBody User user, Errors errors) {
-		if (errors.hasErrors()) {
-			return;
+	public ResponseEntity<User> postUser(@RequestBody String inpt) {
+		inpt = inpt.replaceFirst("\"user\":", "");
+		inpt = inpt.substring(1);
+		inpt = inpt.substring(0, (inpt.length()-1));
+		ObjectMapper mapper = new ObjectMapper();
+		User auth = new User();
+		try {
+			auth = mapper.readValue(inpt, User.class);;
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		us.postUser(user);
+		us.postUser(auth);
+		return ResponseEntity.ok(auth);
 	}
 }

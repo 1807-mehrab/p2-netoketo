@@ -4,6 +4,9 @@ export default Route.extend({
     model() {
         return this.store.peekAll('login');
     },
+    init: function() {
+        this.refresh;
+    },
     actions: {
         login(nkusername,nkpassword) {
             /*OLD METHOD USING GET VIA QUERYRECORD
