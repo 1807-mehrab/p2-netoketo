@@ -47,4 +47,9 @@ public class RecipeDao {
 		return recipes;
 	}
 
+
+	public void updateRecipe(Recipe recipe) {
+		Session s = sessionFactory.getCurrentSession();
+		s.update(recipe);
+	}
 }

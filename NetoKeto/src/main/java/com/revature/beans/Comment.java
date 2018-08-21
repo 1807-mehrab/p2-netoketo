@@ -13,8 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 @Entity
 @Table(name = "COMMENTS")
+@JsonRootName(value = "comment")
 public class Comment
 {
     @Id

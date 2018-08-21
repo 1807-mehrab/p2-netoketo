@@ -10,6 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Recipe;
 import com.revature.services.RecipeService;
@@ -35,6 +42,14 @@ public class RecipeController {
 		recipe.setDateCreated(new java.sql.Date(System.currentTimeMillis()));
 		rs.postRecipe(recipe);
 	}
+
+    @PutMapping(value="/recipes")
+    public void updateRecipe(@Valid @RequestBody Recipe recipe, Errors errors) {
+        if (errors.hasErrors()) {
+            return;
+        }
+        rs.updateRecipe(recipe);
+    }
 
 	@GetMapping(value="/{id}")
 	public ResponseEntity<Recipe> getRecipeById(@PathVariable int id) {

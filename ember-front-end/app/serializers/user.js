@@ -7,7 +7,7 @@ export default DS.RESTSerializer.extend({
         //console.log('This is a test');
         console.log(payload);
         //return this._super(...arguments);
-        payload = { user: payload };
+        payload = { 'User': payload };
         return this._super(store, primaryModelClass, payload, id, requestType);
         
     }
