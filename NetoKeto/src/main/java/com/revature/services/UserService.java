@@ -26,6 +26,7 @@ public class UserService {
     }
     
     public void updateUser(User user) {
+    	dao.updateUser(user);
     }
 
     public UserDao getDao()

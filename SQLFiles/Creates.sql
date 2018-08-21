@@ -1,9 +1,3 @@
-Drop Table Images;
-Drop Table RecipeRating;
-Drop Table Comments;
-Drop Table Recipes;
-Drop Table Accounts;
-
 
 CREATE TABLE Accounts(
 	AccountID int Primary Key,

@@ -31,6 +31,7 @@ public class LoginController {
 		User user_resp= ls.authenticate(user_get);
 		return ResponseEntity.ok(user_resp);
 	}
+	
 
 //	@GetMapping(value="/login")
 //	public ResponseEntity<User> getRecipeById(
