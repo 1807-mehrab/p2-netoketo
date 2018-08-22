@@ -23,7 +23,7 @@
 
       <!-- Content Row -->
       <div class="row">
-        <div class="col-md-6 mb-6">
+        <div class="col-md-12 mb-12">
             <div class="card" id="home-recipe-popular">
             <h2>Most Popular:</h2>
             {{#each model as |recipeBuffer|}}
@@ -32,14 +32,14 @@
         </div><!-- main card -->
         </div><!-- /.col-md-6 -->
         
-        
+        <!--
         <div class="col-md-6 mb-6">
             <div class="card" id="home-recipe-popular">
             <h2>Most Recent:</h2>
             {{#each model as |recipeBuffer|}}
                 {{home-recipe-most-recent recipe=recipeBuffer}}
             {{/each}}
-        </div><!-- main card -->
-        </div><!-- /.col-md-6 -->
+        </div>--><!-- main card -->
+        <!--</div>--><!-- /.col-md-6 -->
 
       </div><!-- /.main -->

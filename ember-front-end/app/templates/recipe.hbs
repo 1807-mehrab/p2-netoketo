@@ -1,1 +1,8 @@
 {{outlet}}
+{{#link-to "new-recipe"}}
+   Make New Recipe
+{{/link-to}}
+
+{{#each model as |recipeBuffer|}}
+    {{recipe-list-all recipe=recipeBuffer}}
+{{/each}}

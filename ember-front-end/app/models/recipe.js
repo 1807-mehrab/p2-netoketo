@@ -1,6 +1,22 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+  recipeId: DS.attr(),
+  recipeName: DS.attr(),
+  deleted: DS.attr(),
+  deletedBy: DS.attr(),
+  owner: DS.attr(),
+  flagged: DS.attr(),
+  dateCreated: DS.attr(),
+  description: DS.attr(),
+  ingredients: DS.attr(),
+  cookingInstructions: DS.attr(),
+  image: DS.attr(),
+  recipeRatings: DS.attr()
+});
+
+/** 
+export default DS.Model.extend({
   recipeId: DS.attr('number'),
   recipeName: DS.attr('string'),
   deleted: DS.attr('number'),
@@ -14,3 +30,4 @@ export default DS.Model.extend({
   image: DS.attr(),
   comment: DS.hasMany('comment')
 });
+*/
