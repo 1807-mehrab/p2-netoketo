@@ -28,8 +28,12 @@
     </div>
   </div>
   {{#each model.comments as |comment|}}
-
-  {{comment.content}}
-
+  <div class="container">
+    <p>
+      {{comment.owner.username}}
+      <br />
+      {{comment.content}}
+    </p>
+  </div>
   {{/each}}
 </div>

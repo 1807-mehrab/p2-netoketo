@@ -5,7 +5,7 @@ export default Route.extend({
   model(params) {
     return RSVP.hash({
       recipe: this.store.findRecord('recipe', params.recipeid),
-      comments: this.store.findAll('comment')
+      comments: this.store.query('comment', {'recipe': { 'recipeId': params.recipeid }})
     });
   }
 

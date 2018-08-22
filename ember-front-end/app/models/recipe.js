@@ -11,5 +11,6 @@ export default DS.Model.extend({
   description: DS.attr('string'),
   ingredients: DS.attr('string'),
   cookingInstructions: DS.attr('string'),
-  image: DS.attr()
+  image: DS.attr(),
+  comment: DS.hasMany('comment')
 });
