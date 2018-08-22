@@ -3,6 +3,7 @@ package com.revature.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.beans.Login;
 import com.revature.beans.User;
 import com.revature.repository.UserDao;
 
@@ -21,6 +22,11 @@ public class LoginService {
 
 	public User authenticate(User user) {
 		return dao.authenticate(user);
+	}
+
+	public void updateUser(User user) {
+		dao.updateUser(user);
+		
 	}
 
 }

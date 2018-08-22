@@ -16,7 +16,11 @@ public class RecipeService {
 	public List<Recipe> getAllRecipes() {
 		return dao.getAllRecipes();
 	}
-	
+
+	public List<Recipe> getRecipesByIngrendient(String ingredients){
+		return dao.getRecipesByIngredients(ingredients);
+	}
+
 	public Recipe getRecipeById(int id) {
 		return dao.getRecipeByID(id);
 	}

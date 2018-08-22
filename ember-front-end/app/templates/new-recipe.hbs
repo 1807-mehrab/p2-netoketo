@@ -1,0 +1,45 @@
+<h1>New Recipe</h1>
+
+<form class="form-horizontal" {{action "newRecipe" rname rdescription ringredients ckinstructions on="submit"}}>
+  <div class="control-group">
+    <div class="control-label">
+      <label>Recipe Name</label>
+    </div>
+
+    <div class="controls">
+      {{input id='Recipe Name' placeholder='Enter Recipe Name' value=rname }}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="control-label">
+      <label>Description</label>
+    </div>
+
+    <div class="controls">
+      {{input id='Recipe Description' placeholder='Enter Recipe Description'  value=rdescription}}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="control-label">
+      <label>Ingredients</label>
+    </div>
+
+    <div class="controls">
+      {{input id='Recipe Ingredients' placeholder='Enter Recipe Ingredients' value=ringredients}}
+    </div>
+
+    <div class="control-group">
+    <div class="control-label">
+      <label>Cooking Instructions</label>
+    </div>
+
+    <div class="controls">
+      {{input id='Cooking Instructions' placeholder='Enter Cooking Instructions' value=ckinstructions}}
+    </div>
+  </div>
+
+  <button type="submit" class="btn">Submit</button>
+  </div>
+</form>
