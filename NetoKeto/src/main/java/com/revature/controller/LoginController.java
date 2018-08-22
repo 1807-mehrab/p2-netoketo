@@ -2,11 +2,15 @@ package com.revature.controller;
 
 import java.io.IOException;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,6 +36,14 @@ public class LoginController {
 		return ResponseEntity.ok(user_resp);
 	}
 	
+	@PutMapping(value= "/login")
+	public ResponseEntity<User> updateUser(@RequestBody Login login) {
+		//User user_upd = new User(login);
+		ls.updateUser(login);
+		System.out.println("Reached Controller");
+		System.out.println(login);
+		return ResponseEntity.ok(login);
+	}
 
 //	@GetMapping(value="/login")
 //	public ResponseEntity<User> getRecipeById(
