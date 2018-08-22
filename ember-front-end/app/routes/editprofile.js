@@ -19,7 +19,7 @@ export default Route.extend({
             currUser.set('password',uppassword);
             currUser.set('email',upemail);
             
-            let stuff = this.store.findRecord('user',usname).then(function(RL){
+            let userObj = this.store.findRecord('user',usname).then(function(RL){
                 console.log('This: ' + RL.get('username'))
                 RL.get('password');
                 RL.set('password',uppassword);
@@ -27,7 +27,7 @@ export default Route.extend({
                 RL.set('email',upemail);
                 RL.save();
             })
-            console.log(stuff);
+            console.log(userObj);
             
  
         }
