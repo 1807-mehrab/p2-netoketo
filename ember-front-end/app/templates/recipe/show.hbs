@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>
+        {{model.recipe.recipeName}}
+      </h2>
+      <a href="https://placeholder.com"><img src="https://via.placeholder.com/350x150"></a>
+      <h4>Description :</h4>
+      <p>
+        {{model.recipe.description}}
+      </p>
+    </div>
+    <div class="col-md-8">
+      <br />
+      <h4>Ingredients :</h4>
+      <p>
+        {{model.recipe.cookingInstructions}}
+      </p>
+      <br />
+      <h4>Cooking Instructions :</h4>
+      <p>
+        {{model.recipe.cookingInstructions}}
+      </p>
+      <br />
+      <p>
+        By {{model.recipe.owner.username}}
+      </p>
+    </div>
+  </div>
+  {{#each model.comments as |comment|}}
+
+  {{comment.content}}
+
+  {{/each}}
+</div>

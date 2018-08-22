@@ -4,7 +4,7 @@ export default DS.Model.extend({
   commentId: DS.attr('number'),
   content: DS.attr('string'),
   flagged: DS.attr('number'),
-  recipe: DS.belongsTo('recipe'),
+  recipe: DS.attr(),
   owner: DS.belongsTo('user'),
   createdOn: DS.attr('date')
 });
