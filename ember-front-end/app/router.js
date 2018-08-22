@@ -10,7 +10,9 @@ Router.map(function() {
   this.route('home');
   this.route('login');
   this.route('register');
-  this.route('recipe');
+  this.route('recipe', function() {
+    this.route('show', { path : '/:recipeid'});
+  });
   this.route('makerecipe');
   this.route('profile');
   this.route('editprofile');
