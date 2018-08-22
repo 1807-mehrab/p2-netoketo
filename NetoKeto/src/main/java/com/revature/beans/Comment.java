@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 @Entity
@@ -30,7 +31,7 @@ public class Comment
     private String content;
 
     @Column
-    private boolean flagged;
+    private Boolean flagged;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "RECIPEID")
@@ -63,12 +64,12 @@ public class Comment
         this.content = content;
     }
 
-    public boolean isFlagged()
+    public Boolean isFlagged()
     {
         return flagged;
     }
 
-    public void setFlagged(boolean flagged)
+    public void setFlagged(Boolean flagged)
     {
         this.flagged = flagged;
     }

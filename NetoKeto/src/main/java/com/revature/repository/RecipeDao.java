@@ -1,5 +1,6 @@
 package com.revature.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -43,11 +44,16 @@ public class RecipeDao {
 
 	public List<Recipe> getRecipesByMostPopular(){
 		Session s = sessionFactory.getCurrentSession();
-		List<Recipe> recipes = s.createQuery("select recipe" +
+		List<Object[]> results = s.createQuery("select recipe.id, sum(rating.valNum)" +
 				" from Recipe recipe" +
 				"	join recipe.recipeRatings rating" +
 				" group by recipe" +
 				" order by sum(rating.valNum) desc").list();
+		List<Recipe> recipes = new ArrayList<>();
+		for(Object[] result : results){
+			System.out.println("Results: " + result[0]);
+			recipes.add((Recipe) s.get(Recipe.class, (int)result[0]));
+		}
 		return recipes;
 	}
 
