@@ -5,6 +5,6 @@ export default DS.Model.extend({
   content: DS.attr('string'),
   flagged: DS.attr('number'),
   recipe: DS.attr(),
-  owner: DS.belongsTo('user'),
+  owner: DS.attr(),
   createdOn: DS.attr('date')
 });

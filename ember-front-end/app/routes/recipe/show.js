@@ -6,7 +6,16 @@ export default Route.extend({
     return RSVP.hash({
       recipe: this.store.findRecord('recipe', params.recipeid),
       comments: this.store.findAll('comment')
+
     });
+  },
+  checkid(crid, rid) {
+    if (crid == rid) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
 });
