@@ -50,8 +50,14 @@ public class User
 
     @NotNull
     @Min(0)
-    @Max(1)
-    // if userType is 1, user is moderator, else user is not admin
+    @Max(2)
+
+    /**
+     * Determines account type
+     * 0 - User
+     * 1 - Mod
+     * 2 - Banned
+     */
     @Column(name = "ACCOUNTTYPE", nullable = false)
     private int userType;
 
