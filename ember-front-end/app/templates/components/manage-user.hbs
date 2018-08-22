@@ -1,20 +1,24 @@
+{{#unless isAdmin}}
 <div class="card">
     <div class="card-body">
         <div class="row">
-            <div class="col-sm-8">
-                {{account.username}}  {{account.password}}  {{account.email}}
+            <div class="col-sm-4">
+                {{account.username}}
+            </div>
+            <div class="col-sm-4">
+                {{account.email}}
             </div>
             <div class="col-sm-2">
-                {{account.userType}}
+                {{user-type account.userType}}
             </div>
             <div class="col-sm-2 pull-right">
                 {{#if isBanned}}
                     <button class="btn btn-success" {{action "unbanUser" account}}>UNBAN</button>
                 {{else}}
-                    <button class="btn btn-danger">BAN</button>
+                    <button class="btn btn-danger" {{action "banUser" account}}>BAN</button>
                 {{/if}}
             </div>
         </div>
     </div>
 </div>
-{{yield}}
+{{/unless}}
