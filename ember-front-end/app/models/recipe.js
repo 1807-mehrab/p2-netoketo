@@ -15,7 +15,7 @@ export default DS.Model.extend({
   recipeRatings: DS.attr()
 });
 
-/** 
+/**
 export default DS.Model.extend({
   recipeId: DS.attr('number'),
   recipeName: DS.attr('string'),

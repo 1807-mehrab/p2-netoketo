@@ -5,8 +5,17 @@ export default Route.extend({
   model(params) {
     return RSVP.hash({
       recipe: this.store.findRecord('recipe', params.recipeid),
-      comments: this.store.query('comment', {'recipe': { 'recipeId': params.recipeid }})
+      comments: this.store.findAll('comment')
+
     });
+  },
+  checkid(crid, rid) {
+    if (crid == rid) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
 });
