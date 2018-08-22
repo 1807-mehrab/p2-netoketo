@@ -1,26 +1,24 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <div class="container" style="background-color: #f4f4f4">
-        <p>
-          Username
-        </p>
-        <p>
-          Email
-        </p>
-      </div>
+    <div class="col-md-4">
+      <h2>
+        Profile
+      </h2>
+      <a href="https://placeholder.com"><img src="https://via.placeholder.com/350x150"></a>
+      {{#each model as |login|}}
+      <h4>Username : {{login.username}}</h4>
+      {{/each}}
     </div>
+    <div class="col-md-8">
+      <br />
+      {{#each model as |login|}}
+      <h4>Email : {{login.email}}</h4>
+      {{/each}}
+      <br />
+      <h4>Recipes made:</h4>
+      <br />
+      <h4>Liked Recipes:</h4>
 
-
-    <div class="col-md-6">
-      <p>
-        {{#each model as |user|}}
-        <p>{{user.username}}</p>
-        <p>{{user.password}}</p>
-        <p>{{user.email}}</p>
-        <p>{{user.userType}}</p>
-        {{/each}}
-      </p>
     </div>
   </div>
   {{#link-to "editprofile"}}
