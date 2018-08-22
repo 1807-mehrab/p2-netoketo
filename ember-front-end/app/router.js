@@ -18,6 +18,7 @@ Router.map(function() {
   this.route('user');
   this.route('recipe-mostPopular');
   this.route('search');
+  this.route('new-recipe');
 });
 
 export default Router;
