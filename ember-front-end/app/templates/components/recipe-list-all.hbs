@@ -7,7 +7,9 @@
         <p class="card-text">{{recipe.description}}</p>
     </div>
     <div class="card-footer">
-        <!--<a href="#" class="btn btn-primary">View More</a>-->
+        {{#link-to "show" recipe.recipeId}}
+        <button class="btn btn-primary">View More</button>
+        {{/link-to}}
        
     </div>
 </div>
