@@ -29,7 +29,9 @@ public class RecipeController {
 
 	@GetMapping(value = "/recipes")
 	public ResponseEntity<List<Recipe>> getAllRecipes() {
-		List<Recipe> recipes = rs.getAllRecipes();
+	    List<Recipe> recipes;
+
+        recipes = rs.getAllRecipes();
 		return ResponseEntity.ok(recipes);
 	}
 
@@ -59,17 +61,26 @@ public class RecipeController {
 
 	}
 
-	//TODO: Order by most recent recipes
 	@GetMapping(value = "/recipes/recent")
-	public List<Recipe> getRecentRecipes(){
+	public ResponseEntity<List<Recipe>> getRecentRecipes(){
 		List<Recipe> recentRecipes = rs.getRecipesOrderedByDate();
-		return recentRecipes;
+		return ResponseEntity.ok(recentRecipes);
 	}
 
-	//TODO: Order by most popular recipes
 	@GetMapping(value="/recipes/popular")
-	public List<Recipe> getPopularRecipes(){
+	public ResponseEntity<List<Recipe>> getPopularRecipes(){
 		List<Recipe> popularRecipes = rs.getRecipesOrderedByRating();
-		return popularRecipes;
+		return ResponseEntity.ok(popularRecipes);
 	}
+
+	@GetMapping(value="/recipes/ingredients/{ingredients}")
+    public ResponseEntity<List<Recipe>> getRecipesByIngredients(@PathVariable String ingredients){
+        List<Recipe> recipes;
+	    recipes = rs.getRecipesByIngrendient(ingredients);
+
+	    return ResponseEntity.ok(recipes);
+    }
+
+
+
 }
