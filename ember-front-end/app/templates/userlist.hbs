@@ -1,6 +1,5 @@
-<ul>
-{{#each users as |user|}}
-    <li>{{user.username}}</li>
+<h1>List of Users</h1>
+{{#each model as |user|}}
+    {{manage-user account=user}}
 {{/each}}
-</ul>
 {{outlet}}
