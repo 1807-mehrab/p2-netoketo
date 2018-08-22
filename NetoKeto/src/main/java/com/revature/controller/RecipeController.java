@@ -28,8 +28,18 @@ public class RecipeController {
 	RecipeService rs;
 
 	@GetMapping(value = "/recipes")
-	public ResponseEntity<List<Recipe>> getAllRecipes() {
-		List<Recipe> recipes = rs.getAllRecipes();
+	public ResponseEntity<List<Recipe>> getAllRecipes(@RequestParam(required = false) String ingredients, @RequestParam(required = false) String search) {
+
+	    List<Recipe> recipes = new ArrayList<>();
+
+	    if(!ingredients.isEmpty()){
+            recipes = rs.getRecipesByIngrendient(ingredients);
+        } else if(!search.isEmpty()){
+          // TODO: Search through all fields
+        } else {
+            recipes = rs.getAllRecipes();
+
+        }
 		return ResponseEntity.ok(recipes);
 	}
 
@@ -59,17 +69,16 @@ public class RecipeController {
 
 	}
 
-	//TODO: Order by most recent recipes
 	@GetMapping(value = "/recipes/recent")
 	public List<Recipe> getRecentRecipes(){
 		List<Recipe> recentRecipes = rs.getRecipesOrderedByDate();
 		return recentRecipes;
 	}
 
-	//TODO: Order by most popular recipes
 	@GetMapping(value="/recipes/popular")
 	public List<Recipe> getPopularRecipes(){
 		List<Recipe> popularRecipes = rs.getRecipesOrderedByRating();
 		return popularRecipes;
 	}
+
 }

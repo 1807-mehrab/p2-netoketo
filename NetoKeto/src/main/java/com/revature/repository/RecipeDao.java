@@ -3,6 +3,7 @@ package com.revature.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -24,10 +25,36 @@ public class RecipeDao {
 		List<Recipe> recipes = s.createQuery("from Recipe").list();
 		return recipes;
 	}
+
+	/**
+	 * Takes in a list of ingredients delimited by commas and returns a list of recipes containing matching ingredients
+	 * @param ingredients
+	 * @return
+	 */
+	public List<Recipe> getRecipesByIngredients(String ingredients){
+		Session s = sessionFactory.getCurrentSession();
+		String[] listOfIngredients = ingredients.split(",");
+		StringBuilder query = new StringBuilder("from Recipe recipe where");
+		for(int i = 0; i < listOfIngredients.length; i++){
+			if(i != 0){
+				query.append((" and"));
+			}
+			query.append(" lower(recipe.ingredients) like :ingredient").append(i);
+		}
+
+		Query q = s.createQuery(query.toString());
+
+		for(int i = 0; i < listOfIngredients.length; i++){
+			q.setParameter("ingredient"+i, "%"+listOfIngredients[i].trim()+"%");
+		}
+
+		return q.list();
+	}
+
 	
 	public Recipe getRecipeByID(int id) {
 		Session s = sessionFactory.getCurrentSession();
-		return (Recipe)s.createQuery("from Recipe where recipeId = :recipeId").setInteger("recipeID",id).list().get(0); 
+		return (Recipe)s.createQuery("from Recipe where recipeId = :recipeId").setInteger("recipeId",id).list().get(0);
 	}
 	
 	@Transactional
