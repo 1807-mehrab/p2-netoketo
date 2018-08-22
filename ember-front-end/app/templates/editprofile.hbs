@@ -1,1 +1,26 @@
-{{outlet}}
+<h1>Edit Profile</h1>
+{{#each model.logins as |login|}}
+<form class="form-horizontal" {{action "update" uppassword upemail on="submit"}}>
+  <div class="control-group">
+    <div class="control-label">
+      <label>Email</label>
+    </div>
+
+    <div class="controls">
+      {{input placeholder=login.email type='email' value=upemail}}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="control-label">
+      <label>Password</label>
+    </div>
+
+    <div class="controls">
+      {{input placeholder=login.password type='password' value=uppassword}}
+    </div>
+  </div>
+
+  <button type="submit" class="btn">Update</button>
+</form>
+{{/each}}
