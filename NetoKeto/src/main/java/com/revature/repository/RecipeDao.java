@@ -27,7 +27,7 @@ public class RecipeDao {
 	}
 
 	/**
-	 * Takes in a list of ingredients delimited by commas and returns a list of recipes containing matching ingredients
+	 * Takes in a list of ingredients delimited by commas and returns a list of recipes containing all matching ingredients
 	 * @param ingredients
 	 * @return
 	 */

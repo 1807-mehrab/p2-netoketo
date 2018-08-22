@@ -28,18 +28,10 @@ public class RecipeController {
 	RecipeService rs;
 
 	@GetMapping(value = "/recipes")
-	public ResponseEntity<List<Recipe>> getAllRecipes(@RequestParam(required = false) String ingredients, @RequestParam(required = false) String search) {
+	public ResponseEntity<List<Recipe>> getAllRecipes() {
+	    List<Recipe> recipes;
 
-	    List<Recipe> recipes = new ArrayList<>();
-
-	    if(!ingredients.isEmpty()){
-            recipes = rs.getRecipesByIngrendient(ingredients);
-        } else if(!search.isEmpty()){
-          // TODO: Search through all fields
-        } else {
-            recipes = rs.getAllRecipes();
-
-        }
+        recipes = rs.getAllRecipes();
 		return ResponseEntity.ok(recipes);
 	}
 
@@ -70,15 +62,25 @@ public class RecipeController {
 	}
 
 	@GetMapping(value = "/recipes/recent")
-	public List<Recipe> getRecentRecipes(){
+	public ResponseEntity<List<Recipe>> getRecentRecipes(){
 		List<Recipe> recentRecipes = rs.getRecipesOrderedByDate();
-		return recentRecipes;
+		return ResponseEntity.ok(recentRecipes);
 	}
 
 	@GetMapping(value="/recipes/popular")
-	public List<Recipe> getPopularRecipes(){
+	public ResponseEntity<List<Recipe>> getPopularRecipes(){
 		List<Recipe> popularRecipes = rs.getRecipesOrderedByRating();
-		return popularRecipes;
+		return ResponseEntity.ok(popularRecipes);
 	}
+
+	@GetMapping(value="/recipes/ingredients/{ingredients}")
+    public ResponseEntity<List<Recipe>> getRecipesByIngredients(@PathVariable String ingredients){
+        List<Recipe> recipes;
+	    recipes = rs.getRecipesByIngrendient(ingredients);
+
+	    return ResponseEntity.ok(recipes);
+    }
+
+
 
 }
