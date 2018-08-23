@@ -1,36 +1,41 @@
 <div class="card">
-        <div class="card-body">
-            <div class="row">   
-                <div class="col-md-6 mb-6 ml-auto mr-auto">
-                    <div class="input-group">
-                    
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                        <button class="btn btn-success" type="button">Search!</button>
-                        </span>
-                    </div>
+    <div class="card-body">
+        <div class="row">   
+            <div class="col-md-6 mb-6 ml-auto mr-auto">
+                <div class="input-group">
+                
+                    {{input value=value
+                        key-up=(action 'handleFilterEntry')
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Search for..."}}
+                    <span class="input-group-btn">
+                    <button class="btn btn-success" type="button">Search!</button>
+                    </span>
                 </div>
-            </div> <!-- end of row -->
-            <br>
-            <!-- Search Option Radio Buttons -->
-            <div class="row">
-                <div class="col-md-6 mb-6 ml-auto mr-auto">
-                    <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" value="">Option 1
-                    </label>
-                    </div>
-                    <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" value="">Option 2
-                    </label>
-                    </div>
-                    <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" value="">Option 3
-                    </label>
-                    </div>
+            </div>
+        </div> <!-- end of row -->
+        <br>
+        <!-- Search Option Radio Buttons -->
+        <div class="row">
+            <div class="col-md-6 mb-6 ml-auto mr-auto">
+                <div class="form-check-inline">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">Option 1
+                </label>
                 </div>
-            </div> <!-- end of row -->
-        </div>
-      </div>
+                <div class="form-check-inline">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">Option 2
+                </label>
+                </div>
+                <div class="form-check-inline">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">Option 3
+                </label>
+                </div>
+            </div>
+        </div> <!-- end of row -->
+    </div>
+</div>
+{{yield results}}

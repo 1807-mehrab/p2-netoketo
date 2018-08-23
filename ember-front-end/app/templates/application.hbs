@@ -69,7 +69,15 @@
     {{#if isSearch}}
     <br>
     <div class="container">
-        {{search-bar-filter}}
+        {{#search-bar-filter
+            filter=(action 'filterByIngredients')
+            as |filteredResults|}}
+        <ul>
+            {{#each filteredResults as |recipe|}}
+                <li>{{recipe.recipeName}}</li>
+            {{/each}}
+        </ul>
+        {{/search-bar-filter}}
     </div>
     {{/if}}
     <br>

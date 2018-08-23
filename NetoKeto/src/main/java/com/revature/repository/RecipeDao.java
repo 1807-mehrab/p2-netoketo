@@ -28,8 +28,8 @@ public class RecipeDao {
 
 	/**
 	 * Takes in a list of ingredients delimited by commas and returns a list of recipes containing all matching ingredients
-	 * @param ingredients
-	 * @return
+	 * @param ingredients List of ingredients delimited by comma
+	 * @return matching ingredients
 	 */
 	public List<Recipe> getRecipesByIngredients(String ingredients){
 		Session s = sessionFactory.getCurrentSession();
