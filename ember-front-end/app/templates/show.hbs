@@ -27,6 +27,14 @@
       </p>
     </div>
   </div>
+
+  <div class="container" style="background-color: #f4f4f4">
+    <form class="form-horizontal" {{action "createComment" comment model.recipe on="submit" }}>
+      {{textarea cols="80" rows="6" maxlength=1000 type="TextArea" placeholder="Add a comment here..." value=comment}}
+      <button class="btn btn-primary" type="submit">Add Comment</button>
+    </form>
+  </div>
+
   {{#each model.comments as |comment|}}
   <div class="container">
     <p>
