@@ -15,7 +15,7 @@ export default DS.Model.extend({
   recipeRatings: DS.attr()
 });
 
-/** 
+/**
 export default DS.Model.extend({
   recipeId: DS.attr('number'),
   recipeName: DS.attr('string'),
@@ -27,6 +27,7 @@ export default DS.Model.extend({
   description: DS.attr('string'),
   ingredients: DS.attr('string'),
   cookingInstructions: DS.attr('string'),
-  image: DS.attr()
+  image: DS.attr(),
+  comment: DS.hasMany('comment')
 });
 */
