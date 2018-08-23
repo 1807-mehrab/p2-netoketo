@@ -31,8 +31,8 @@ public class CommentController {
 	}
 	
 	@GetMapping(value="/comments/{id}")
-	public ResponseEntity<List<Comment>> getCommentsInRecipe(@PathVariable int id) {
-		List<Comment> comments = cs.getCommentsInRecipe(id);
+	public ResponseEntity<List<Comment>> getCommentsById(@PathVariable int id) {
+		List<Comment> comments = cs.getCommentsById(id);
 		return ResponseEntity.ok(comments);
 	}
 	
@@ -51,7 +51,7 @@ public class CommentController {
 		return ResponseEntity.ok(comment);
 	}
 	
-	@PutMapping(value="/comments")
+	@PutMapping(value="/comments/{id}")
 	public ResponseEntity<Comment> updateComment(@Valid @RequestBody Comment comment, Errors errors) {
 		if (errors.hasErrors()) {
 			return null;

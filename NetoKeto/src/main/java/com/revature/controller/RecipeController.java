@@ -59,7 +59,7 @@ public class RecipeController {
 		return ResponseEntity.ok(recipe);
 	}
 
-	@PutMapping(value = "/recipes")
+	@PutMapping(value = "/recipes/{id}")
 	public ResponseEntity<Recipe> updateRecipe(@Valid @RequestBody Recipe recipe, Errors errors) {
 		if (errors.hasErrors()) {
 			return null;

@@ -25,7 +25,7 @@ public class RecipeRatingController {
 	
 	@GetMapping(value="/ratings")
 	public ResponseEntity<List<RecipeRating>> getRecipeRatingsInRecipe(@RequestParam(required = false) Integer id) {
-		
+		System.out.println(id);
 		if (id != null) {
 			List<RecipeRating> ratings = rrs.getRecipeRatingsInRecipe(id);
 			return ResponseEntity.ok(ratings);
