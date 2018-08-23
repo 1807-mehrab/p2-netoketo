@@ -45,11 +45,20 @@ public class RecipeDao {
 		Query q = s.createQuery(query.toString());
 
 		for(int i = 0; i < listOfIngredients.length; i++){
-			q.setParameter("ingredient"+i, "%"+listOfIngredients[i].trim()+"%");
+			q.setParameter("ingredient"+i, "%"+listOfIngredients[i].trim().toLowerCase()+"%");
 		}
 
 		return q.list();
 	}
+
+	public List<Recipe> getRecipesByName(String name){
+	    Session s = sessionFactory.getCurrentSession();
+	    List<Recipe> recipes = new ArrayList<>();
+
+	    recipes = s.createQuery("from Recipe recipe where lower (recipe.recipeName) like :name").setParameter("name", "%"+name.trim().toLowerCase()+"%").list();
+
+	    return recipes;
+    }
 
 	
 	public Recipe getRecipeByID(int id) {

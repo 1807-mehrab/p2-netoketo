@@ -12,23 +12,27 @@ import com.revature.repository.RecipeDao;
 public class RecipeService {
 	@Autowired
 	private RecipeDao dao;
-	
+
 	public List<Recipe> getAllRecipes() {
 		return dao.getAllRecipes();
 	}
 
-	public List<Recipe> getRecipesByIngrendient(String ingredients){
+	public List<Recipe> getRecipesByIngredients(String ingredients){
 		return dao.getRecipesByIngredients(ingredients);
 	}
+
+	public List<Recipe> getRecipesByName(String name){
+	    return dao.getRecipesByName(name);
+    }
 
 	public Recipe getRecipeById(int id) {
 		return dao.getRecipeByID(id);
 	}
-	
+
 	public void postRecipe(Recipe recipe) {
 		dao.postRecipe(recipe);
 	}
-	
+
 	public void updateRecipe(Recipe recipe) {
 		dao.updateRecipe(recipe);
 	}
