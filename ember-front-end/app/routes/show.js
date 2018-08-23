@@ -5,7 +5,14 @@ export default Route.extend({
   model(params) {
     return RSVP.hash({
       recipe: this.store.findRecord('recipe', params.recipeid),
-      comments: this.store.findAll('comment', params.recipeid)
+      comments: this.store.findAll('comment', params.recipeid),
+      ratings: this.store.query('rating', {ratingid:params.recipeid}).then(function(ratings) {
+        var sum = 0;
+        ratings.forEach(function(element) { sum += element.valNum })
+        return sum;
+      }),
+      login: this.store.peekAll('login')
+
 
     });
   },
@@ -42,14 +49,5 @@ export default Route.extend({
           }).save().then(function() { self.refresh; })
         })
       }
-  },
-
-  checkValid (param1, param2) {
-    if (param1 == param2) {
-      return true;
-    }
-    else {
-      return false;
-    }
   }
 });
