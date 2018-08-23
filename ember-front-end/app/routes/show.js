@@ -42,5 +42,14 @@ export default Route.extend({
           }).save().then(function() { self.refresh; })
         })
       }
+  },
+
+  checkValid (param1, param2) {
+    if (param1 == param2) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 });

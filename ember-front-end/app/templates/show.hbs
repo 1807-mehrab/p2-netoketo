@@ -40,17 +40,18 @@
       <button class="btn btn-primary" type="submit">Add Comment</button>
     </form>
   </div>
+  <br />
 
   {{#each model.comments as |comment|}}
-  <div class="container">
+  {{#if (checkvalid comment.recipe.recipeId model.recipe.recipeId)}}
+  <div class="container" style="background-color: white">
     <p>
       {{comment.owner.username}}
       <br />
       {{comment.content}}
     </p>
-    {{comment.recipe.recipeId}}
-    {{model.recipe.recipeId}}
   </div>
-
+  <br />
+  {{/if}}
   {{/each}}
 </div>
