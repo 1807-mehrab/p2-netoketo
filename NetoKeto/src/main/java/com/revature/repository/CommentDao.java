@@ -24,6 +24,12 @@ public class CommentDao {
 		return comments;
 	}
 	
+	public List<Comment> getCommentsById(int id) {
+		Session s = sessionFactory.getCurrentSession();
+		List<Comment> comments = s.createQuery("from Comment where commentId = :commentId").setInteger("commentId", id).list();
+		return comments;
+	}
+	
 	public List<Comment> getCommentsInRecipe(int id) {
 		Session s = sessionFactory.getCurrentSession();
 		List<Comment> comments = s.createQuery("from Comment where recipeid = :recipeid").setInteger("recipeid", id).list();
