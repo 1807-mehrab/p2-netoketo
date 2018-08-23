@@ -6,14 +6,25 @@ export default Component.extend({
 
     init(){
         this._super(...arguments);
-        this.filter('').then((results) => this.set('results', results));
+        this.filterName('').then((results) => this.set('results', results));
+        this.set('searchFilter', 'name');
     },
 
     actions: {
         handleFilterEntry(){
             let filterInputValue = this.value;
-            let filterAction = this.filter;
-            filterAction(filterInputValue).then((filterResults) => this.set('results', filterResults));
+            let filterIngrAction = this.filterIngr;
+            let filterNameAction = this.filterName;
+            
+            if(this.get('searchFilter') === 'name'){
+                filterNameAction(filterInputValue).then((filterResults) => this.set('results', filterResults));
+            } else if (this.get('searchFilter') === 'ingredients'){
+                filterIngrAction(filterInputValue).then((filterResults) => this.set('results', filterResults));
+            }
+        },
+        filterToggle: function(choice){
+            // console.log("changing filter choice", choice);
+            this.set('searchFilter', choice);
         }
     }
 });
