@@ -23,6 +23,12 @@ export default Component.extend({
                     RL.set('userType', 0);
                     RL.save();
                 });
+        },
+        deleteUser: function(user){
+            this.store.findRecord('user', user.username, { backgroundReload: true }).then(function(post) {
+                console.log('This: ' + post.get('username'))
+                post.destroyRecord();
+              });
         }
     }
 });
