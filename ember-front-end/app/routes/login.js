@@ -22,8 +22,18 @@ export default Route.extend({
             //NEW METHOD USING POST:
             this.store.unloadAll('login');
             var onSuccess = function(){
-                console.log("success");
-                self.transitionTo('home');
+                let logindata = self.store.peekAll('login');
+                let currUser = logindata.get("firstObject");
+                console.log("Account Type: " + currUser.userType)
+                if(currUser.userType == 0){
+                    console.log("banned user");
+                    self.store.unloadAll('login');
+                    self.refresh;
+                } else {
+                    console.log("success");
+                    self.transitionTo('home');
+                }
+                
             }
             var onFail = function(){
                 console.log("failure");
