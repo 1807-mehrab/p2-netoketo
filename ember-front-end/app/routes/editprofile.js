@@ -32,11 +32,15 @@ export default Route.extend({
             console.log(userObj);
         },
         delete(){
+            let self = this;
             let logindata = this.store.peekAll('login');
             let currUser = logindata.get("firstObject");
             let usname = currUser.get('username');
             this.store.findRecord('user', usname, { backgroundReload: false }).then(function(post) {
-                post.destroyRecord(); // => DELETE to /posts/2
+                console.log('This: ' + post.get('username'))
+                post.destroyRecord();
+                self.store.unloadAll('login');
+                self.transitionTo('login');
               });
         }
     }

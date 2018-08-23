@@ -92,7 +92,10 @@ public class UserController {
 //		return ResponseEntity.ok(response);
 //	}
 	@DeleteMapping(value="/users/{username}")
-	public void deleteUser(@RequestBody User user){
-		us.deleteUser(user);
+	public ResponseEntity<User> deleteUser(@PathVariable("username") String username){
+		System.out.println("Attempted Deletion: " + username);
+		User del = us.getUserByUsername(username);
+		us.deleteUser(del);
+		return ResponseEntity.ok(del);
 	}
 }
