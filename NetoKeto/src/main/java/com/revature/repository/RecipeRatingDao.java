@@ -18,6 +18,12 @@ public class RecipeRatingDao {
 		this.sessionFactory = sessionFactory;
 	}
 	
+	public List<RecipeRating> getAllRecipeRatings() {
+		Session s = sessionFactory.getCurrentSession();
+		List<RecipeRating> ratings = s.createQuery("from RecipeRating").list();
+		return ratings;
+	}
+	
 	public List<RecipeRating> getRecipeRatingsInRecipe(int id) {
 		Session s = sessionFactory.getCurrentSession();
 		List<RecipeRating> ratings = s.createQuery("from RecipeRating where recipeid = :recipeid").setInteger("recipeid", id).list();

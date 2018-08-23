@@ -21,6 +21,10 @@ public class RecipeRatingService {
 		return dao.getRecipeRatingsInRecipe(id);
 	}
 	
+	public List<RecipeRating> getAllRecipeRatings() {
+		return dao.getAllRecipeRatings();
+	}
+	
 	public void postRecipeRating(RecipeRating recipeRating) {
 		dao.postRecipeRating(recipeRating);
 	}

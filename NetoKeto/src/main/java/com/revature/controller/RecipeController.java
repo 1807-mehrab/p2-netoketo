@@ -34,7 +34,15 @@ public class RecipeController {
 	    if (name != null && !name.isEmpty()){
 	    	recipes = rs.getRecipesByName(name);
 		} else if(ingredients != null && !ingredients.isEmpty()){
-			recipes = rs.getRecipesByIngredients(ingredients);
+            if (ingredients.equals("POPULAR")){
+                recipes = rs.getAllRecipes();
+                //Logic for Popular
+            } else if (ingredients.equals("RECENT")){
+                recipes = rs.getAllRecipes();
+                //Logic for Recent
+            } else {
+                recipes = rs.getRecipesByIngredients(ingredients);
+            }
 		} else {
 			recipes = rs.getAllRecipes();
 		}
