@@ -11,7 +11,17 @@ module.exports = function(defaults) {
     },
 
     fingerprint: {
-      exclude: ['asset/images/']
+      enabled: false,
+      exclude: fingerprintExclude,
+      exclude: ['assets/images'],
+      extensions: [
+        'css',
+        'gif',
+        'jpg',
+        'js',
+        'png',
+        'ico'
+      ]
     }
   });
 
