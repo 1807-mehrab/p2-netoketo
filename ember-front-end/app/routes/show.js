@@ -25,7 +25,22 @@ export default Route.extend({
               createdOn: new Date()
             }).save().then(function() { self.refresh;})
           })
+      },
+
+      createRating(number, recipeitem) {
+        let logindata = this.store.peekAll('login');
+        let currUser = logindata.get("firstObject");
+        let usname = currUser.get('username');
+        let self = this;
+        this.store.findRecord('user', usname).then(function(RL){
+          self.store.createRecord('rating', {
+            ratingId: 1,
+            owner: RL,
+            recipe: recipeitem,
+            valNum: number,
+            dateCreated: new Date()
+          }).save().then(function() { self.refresh; })
+        })
       }
   }
-
 });
