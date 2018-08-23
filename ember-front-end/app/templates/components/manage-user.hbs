@@ -13,9 +13,11 @@
             </div>
             <div class="col-sm-2 pull-right">
                 {{#if isBanned}}
-                    <button class="btn btn-success" {{action "unbanUser" account}}>UNBAN</button>
+                    <button class="btn btn-success" {{action "unbanUser" account}}>UNBAN</button><br>
+                    <button class="btn btn-danger" {{action "deleteUser" account}}>Delete</button>
                 {{else}}
-                    <button class="btn btn-danger" {{action "banUser" account}}>BAN</button>
+                    <button class="btn btn-danger" {{action "banUser" account}}>BAN</button><br>
+                    <button class="btn btn-danger" {{action "deleteUser" account}}>Delete</button>
                 {{/if}}
             </div>
         </div>
