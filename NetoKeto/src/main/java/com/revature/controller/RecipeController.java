@@ -28,10 +28,15 @@ public class RecipeController {
 	RecipeService rs;
 
 	@GetMapping(value = "/recipes")
-	public ResponseEntity<List<Recipe>> getAllRecipes() {
+	public ResponseEntity<List<Recipe>> getAllRecipes(@RequestParam(required = false) String ingredients) {
 	    List<Recipe> recipes;
 
-        recipes = rs.getAllRecipes();
+	    System.out.println("INGREDIENTS: " + ingredients);
+	    if(ingredients != null && !ingredients.isEmpty()){
+			recipes = rs.getRecipesByIngrendient(ingredients);
+		} else {
+			recipes = rs.getAllRecipes();
+		}
 		return ResponseEntity.ok(recipes);
 	}
 
