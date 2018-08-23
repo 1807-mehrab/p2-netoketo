@@ -9,11 +9,16 @@
       <p>
         {{model.recipe.description}}
       </p>
-      <div class="row">
-        <button class="btn btn-success" {{action "createRating" 1 model.recipe}}>:D</button>
-        <button class="btn btn-danger" {{action "createRating" -1 model.recipe}}>D:</button>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2" style="background-color: skyblue">
+            <h4>{{model.ratings}}</h4>
+          </div>
+          <button class="btn btn-success" {{action "createRating" 1 model.recipe}}>:D</button>
+          <button class="btn btn-danger" {{action "createRating" -1 model.recipe}}>D:</button>
+        </div>
+        <br />
       </div>
-      <br />
     </div>
     <div class="col-md-8">
       <br />
@@ -32,7 +37,7 @@
       </p>
     </div>
   </div>
-
+  <br />
   <div class="container" style="background-color: #f4f4f4">
     <form class="form-horizontal" {{action "createComment" comment model.recipe on="submit" }}>
       {{textarea cols="80" rows="6" maxlength=1000 type="TextArea" placeholder="Add a comment here..." value=comment}}
