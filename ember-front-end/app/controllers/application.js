@@ -12,6 +12,13 @@ export default Controller.extend({
             } else {
                 return this.store.findAll('recipe');
             }
+        },
+        filterByName(param){
+            if(param !== ''){
+                return this.store.query('recipe', { name: param });
+            } else {
+                return this.store.findAll('recipe');
+            }
         }
     }
 });

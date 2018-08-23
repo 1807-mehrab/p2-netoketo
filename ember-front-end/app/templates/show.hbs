@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-lg-4">
       <h2>
         {{model.recipe.recipeName}}
       </h2>
@@ -11,7 +11,7 @@
       </p>
       <div class="container">
         <div class="row">
-          <div class="col-md-2" style="background-color: skyblue">
+          <div class="col-lg-2" style="background-color: skyblue">
             <h4>{{model.ratings}}</h4>
           </div>
           <button class="btn btn-success" {{action "createRating" 1 model.recipe}}>:D</button>
@@ -20,7 +20,7 @@
         <br />
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-lg-8">
       <br />
       <h4>Ingredients :</h4>
       <p>
@@ -45,18 +45,12 @@
       <button class="btn btn-primary" type="submit">Add Comment</button>
     </form>
   </div>
-  <br />
-
-  {{#each model.comments as |comment|}}
-  {{#if (checkvalid comment.recipe.recipeId model.recipe.recipeId)}}
+  <br /> {{#each model.comments as |comment|}} {{#if (checkvalid comment.recipe.recipeId model.recipe.recipeId)}}
   <div class="container" style="background-color: white">
     <p>
       {{comment.owner.username}}
-      <br />
-      {{comment.content}}
+      <br /> {{comment.content}}
     </p>
   </div>
-  <br />
-  {{/if}}
-  {{/each}}
+  <br /> {{/if}} {{/each}}
 </div>

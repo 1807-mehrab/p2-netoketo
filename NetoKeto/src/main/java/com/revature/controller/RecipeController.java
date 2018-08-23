@@ -28,20 +28,21 @@ public class RecipeController {
 	RecipeService rs;
 
 	@GetMapping(value = "/recipes")
-	public ResponseEntity<List<Recipe>> getAllRecipes(@RequestParam(required = false) String ingredients) {
+	public ResponseEntity<List<Recipe>> getAllRecipes(@RequestParam(required = false) String ingredients, @RequestParam(required = false) String name) {
 	    List<Recipe> recipes;
 
-	    System.out.println("INGREDIENTS: " + ingredients);
-	    if(ingredients != null && !ingredients.isEmpty()){
-			if (ingredients.equals("POPULAR")){
-				recipes = rs.getAllRecipes();
-				//Logic for Popular
-			} else if (ingredients.equals("RECENT")){
-				recipes = rs.getAllRecipes();
-				//Logic for Recent
-			} else {
-				recipes = rs.getRecipesByIngrendient(ingredients);
-			}
+	    if (name != null && !name.isEmpty()){
+	    	recipes = rs.getRecipesByName(name);
+		} else if(ingredients != null && !ingredients.isEmpty()){
+            if (ingredients.equals("POPULAR")){
+                recipes = rs.getAllRecipes();
+                //Logic for Popular
+            } else if (ingredients.equals("RECENT")){
+                recipes = rs.getAllRecipes();
+                //Logic for Recent
+            } else {
+                recipes = rs.getRecipesByIngredients(ingredients);
+            }
 		} else {
 			recipes = rs.getAllRecipes();
 		}
@@ -89,7 +90,7 @@ public class RecipeController {
 	@GetMapping(value="/recipes/ingredients/{ingredients}")
     public ResponseEntity<List<Recipe>> getRecipesByIngredients(@PathVariable String ingredients){
         List<Recipe> recipes;
-	    recipes = rs.getRecipesByIngrendient(ingredients);
+	    recipes = rs.getRecipesByIngredients(ingredients);
 
 	    return ResponseEntity.ok(recipes);
     }
