@@ -31,7 +31,7 @@ public class UserDao {
     @Transactional
     public void postUser(User user) {
     	Session s = sessionFactory.getCurrentSession();
-    	s.save(user);
+    	s.persist(user);
     }
    
     public void updateUser(User user) {
@@ -50,5 +50,10 @@ public class UserDao {
     		user = users.get(0);
     	}
     	return user;
+    }
+    
+    public void deleteUser(User user) {
+    	Session s = sessionFactory.getCurrentSession();
+    	s.delete(user);
     }
 }

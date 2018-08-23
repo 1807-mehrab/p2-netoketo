@@ -38,4 +38,8 @@ public class UserService {
     {
         this.dao = dao;
     }
+    
+    public void deleteUser(User user) {
+    	dao.deleteUser(user);
+    }
 }
