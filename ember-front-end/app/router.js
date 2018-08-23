@@ -21,6 +21,7 @@ Router.map(function() {
   this.route('search');
   this.route('new-recipe');
   this.route('userlist');
+  this.route('about');
 });
 
 export default Router;
