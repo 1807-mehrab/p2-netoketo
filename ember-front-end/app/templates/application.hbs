@@ -1,97 +1,89 @@
 <html>
- <head>
 
- </head>
-   <body>
-   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-   <!-- Brand -->
-   <a class="navbar-brand" href="#">NETOKETO</a>
+<head>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">NETOKETO</a>
 
 
-   <!-- Right nav bar elements -->
-   <ul class="navbar-nav">
-       <li class="nav-item">
-       <div class="nav-link">
-       {{#link-to "recipe"}}
-       Recipes
-       {{/link-to}}
-       </div>
-       </li>
-       <li class="nav-item">
-       <div class="nav-link">
-       {{#link-to "home"}}
-       Home
-       {{/link-to}}
-       </div>
-       </li>
-       <li class="nav-item">
-       <div class="nav-link">
-       <button class="btn btn-info" {{action 'toggleSearch'}}>
-           Search
-        </button>
-       </div>
-       </li>
-   </ul>
+        <!-- Right nav bar elements -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <div class="nav-link">
+                    {{#link-to "recipe"}} Recipes {{/link-to}}
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="nav-link">
+                    {{#link-to "home"}} Home {{/link-to}}
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="nav-link">
+                    <button class="btn btn-info" {{action 'toggleSearch'}}>
+                        Search
+                    </button>
+                </div>
+            </li>
+        </ul>
 
-   <!-- Left nav bar elements-->
-   <ul class="navbar-nav ml-auto">
-       {{#if model as |login|}}
-       <li class="nav-item">
-        <div class="nav-link">
-            {{#each model as |login|}}
-            {{manager-button lgn = login}}
-            {{/each}}
-            </div>
-       </li>
-       <li class="nav-item">
-           <div class="nav-link">
-           {{#link-to "profile"}}
-           Profile
-           {{/link-to}}
-           </div>
-       </li>
-       <li class="nav-item">
-           <button class="btn btn-warning" {{action 'logout'}}>
-           Logout
-           </button>
-       </li>
-       {{else}}
-       <li class="nav-item">
-           <div class="nav-link">
-           {{#link-to "login"}}
-           Login
-           {{/link-to}}
-           </div>
-        </li>
-        {{/if}}
-    </ul>
+        <!-- Left nav bar elements-->
+        <ul class="navbar-nav ml-auto">
+            {{#if model as |login|}}
+            <li class="nav-item">
+                <div class="nav-link">
+                    {{#each model as |login|}} {{manager-button lgn = login}} {{/each}}
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="nav-link">
+                    {{#link-to "profile"}} Profile {{/link-to}}
+                </div>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-warning" {{action 'logout'}}>
+                    Logout
+                </button>
+            </li>
+            {{else}}
+            <li class="nav-item">
+                <div class="nav-link">
+                    {{#link-to "login"}} Login {{/link-to}}
+                </div>
+            </li>
+            {{/if}}
+        </ul>
     </nav>
     {{#if isSearch}}
     <br>
     <div class="container">
-        {{#search-bar-filter
-            filter=(action 'filterByIngredients')
-            as |filteredResults|}}
-        <ul>
+        {{#search-bar-filter filterIngr=(action 'filterByIngredients') filterName=(action 'filterByName') as |filteredResults|}}
+        
+        <ul class="list-group list-group-flush">
             {{#each filteredResults as |recipe|}}
-                <li>{{recipe.recipeName}}</li>
+            {{#link-to "show" recipe.recipeId invokeAction=(action 'toggleSearch')}}<li class="list-group-item list-group-item-action">{{recipe.recipeName}}</li>{{/link-to}}
             {{/each}}
         </ul>
         {{/search-bar-filter}}
     </div>
     {{/if}}
     <br>
-   <div class="container">
-   {{outlet}}
-   </div>
-   <br>
-   <br>
-   <br>
-   <br>
+    <div class="container">
+        {{outlet}}
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
 
 
-   <div class="footer">
-   <p>By the NETOKETO team!</p>
-   </div>
+    <div class="footer">
+        <p>By the NETOKETO team!</p>
+    </div>
 </body>
+
 </html>

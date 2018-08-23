@@ -8,6 +8,20 @@ module.exports = function(defaults) {
       'bootstrapVersion': 4,
       'importBootstrapFont': false,
       'importBootstrapCSS': true
+    },
+
+    fingerprint: {
+      enabled: false,
+      exclude: fingerprintExclude,
+      exclude: ['assets/images'],
+      extensions: [
+        'css',
+        'gif',
+        'jpg',
+        'js',
+        'png',
+        'ico'
+      ]
     }
   });
 

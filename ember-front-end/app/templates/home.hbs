@@ -26,7 +26,7 @@
         <div class="col-md-12 mb-12">
             <div class="card" id="home-recipe-popular">
             <h2>Most Popular:</h2>
-            {{#each model as |recipeBuffer|}}
+            {{#each model.popular as |recipeBuffer|}}
                 {{home-recipe-most-popular recipe=recipeBuffer}}
             {{/each}}
         </div><!-- main card -->
