@@ -30,7 +30,7 @@ public class CommentController {
 		return ResponseEntity.ok(comments);
 	}
 	
-	@GetMapping(value="/comments/recipe/{id}")
+	@GetMapping(value="/comments/{id}")
 	public ResponseEntity<List<Comment>> getCommentsInRecipe(@PathVariable int id) {
 		List<Comment> comments = cs.getCommentsInRecipe(id);
 		return ResponseEntity.ok(comments);
