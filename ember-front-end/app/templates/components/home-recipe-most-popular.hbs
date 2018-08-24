@@ -1,13 +1,16 @@
 <div class="card">
     <div class="card-body">
         <h3 class="card-title">{{recipe.recipeName}}</h3>
-        <img class="img-fluid rounded" src="http://placehold.it/500x200" alt="">
+        <img height="200" width="500" class="img-responsive" src="assets/images/{{recipe.recipeId}}.jpg" alt="" >
         <br>
         <strong>Description:</strong>
         <p class="card-text">{{recipe.description}}</p>
     </div>
     <div class="card-footer">
-        <a href="#" class="btn btn-primary">View More</a>
+        {{#link-to "show" recipe.recipeId}}
+        <button class="btn btn-primary">View More</button>
+        {{/link-to}}
+       
     </div>
 </div>
 <br>

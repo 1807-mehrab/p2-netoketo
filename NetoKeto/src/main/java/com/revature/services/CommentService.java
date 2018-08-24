@@ -21,6 +21,10 @@ public class CommentService {
 		return dao.getAllComments();
 	}
 	
+	public List<Comment> getCommentsById(int id) {
+		return dao.getCommentsById(id);
+	}
+	
 	public List<Comment> getCommentsInRecipe(int id) {
 		return dao.getCommentsInRecipe(id);
 	}

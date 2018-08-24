@@ -4,7 +4,7 @@
       <h2>
         {{model.recipe.recipeName}}
       </h2>
-      <a href="https://placeholder.com"><img src="https://via.placeholder.com/350x150"></a>
+      <img class="img-responsive" src="http://placehold.it/300x150">
       <h4>Description :</h4>
       <p>
         {{model.recipe.description}}
@@ -14,8 +14,22 @@
           <div class="col-lg-2" style="background-color: skyblue">
             <h4>{{model.ratings}}</h4>
           </div>
-          <button class="btn btn-success" {{action "createRating" 1 model.recipe}}>:D</button>
-          <button class="btn btn-danger" {{action "createRating" -1 model.recipe}}>D:</button>
+          <div class="col-md-2">
+            <button class="btn btn-success" {{action "createRating" 1 model.recipe}}>+</button>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-danger" {{action "createRating" -1 model.recipe}}>-</button>
+          </div>
+          <div class="col-md-6">
+            {{#unless model.recipe.flagged}}
+              <button class="btn btn-danger" {{action "flagRecipe" model.recipe}}>Flag!</button>
+            {{/unless}}
+            {{#if model.recipe.flagged}}
+            <p style="color: red">
+              Recipe is flagged!
+            </p>
+            {{/if}}
+          </div>
         </div>
         <br />
       </div>
@@ -51,6 +65,14 @@
       {{comment.owner.username}}
       <br /> {{comment.content}}
     </p>
+    {{#unless comment.flagged}}
+      <button class="btn btn-danger" {{action "flagComment" comment}}>Flag!</button>
+    {{/unless}}
+    {{#if comment.flagged}}
+    <p style="color: red">
+      This comment is flagged!
+    </p>
+    {{/if}}
   </div>
   <br /> {{/if}} {{/each}}
 </div>
