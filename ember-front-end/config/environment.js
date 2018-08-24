@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'ember-front-end',
     environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -47,7 +47,7 @@ module.exports = function(environment) {
     // here you can enable a production-specific feature
     // = 's3.us-east-2.amazonaws.com/netoketo.com/';
     //ENV.location = 'hash';
-    ENV.locationType = 'hash'
+    //ENV.locationType = 'hash'
   }
 
   return ENV;
