@@ -47,6 +47,7 @@ module.exports = function(environment) {
     // here you can enable a production-specific feature
     // = 's3.us-east-2.amazonaws.com/netoketo.com/';
     //ENV.location = 'hash';
+    ENV.locationType = 'hash'
   }
 
   return ENV;
