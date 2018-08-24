@@ -4,7 +4,7 @@
       <h2>
         {{model.recipe.recipeName}}
       </h2>
-      <a href="https://placeholder.com"><img src="https://via.placeholder.com/350x150"></a>
+      <a href="https://placeholder.com"><img src="assets/images/{{model.recipe.recipeId}}.jpg"></a>
       <h4>Description :</h4>
       <p>
         {{model.recipe.description}}
@@ -15,10 +15,10 @@
             <h4>{{model.ratings}}</h4>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-success" {{action "createRating" 1 model.recipe}}>:D</button>
+            <button class="btn btn-success" {{action "createRating" 1 model.recipe}}>+</button>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-danger" {{action "createRating" -1 model.recipe}}>D:</button>
+            <button class="btn btn-danger" {{action "createRating" -1 model.recipe}}>-</button>
           </div>
           <div class="col-md-6">
             {{#unless model.recipe.flagged}}
